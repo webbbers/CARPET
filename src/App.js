@@ -4,22 +4,59 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
-import SignIn from './components/sign-in/sign-in.component';
+
+import SignInAndSignUpPage from './pages/sign-in-up/sign-in-up.component';
 
 import Header from './components/header/header.component';
 
+import { auth,createUserProfileDocument } from './firebase/firebase.utils';
+import { setCurrentUser } from './redux/user/user.actions';
+
 
 const App = props => {
+  const {setCurrentUser} = props;
+
+  var unsubscribeFromAuth=null;
+  
+  useEffect(()=> {
+    // eslint-disable-next-line
+    unsubscribeFromAuth= auth.onAuthStateChanged(async userAuth => {
+      if (userAuth){
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot( snapShot => {
+          setCurrentUser({
+            id:snapShot.id,
+            ...snapShot.data()
+          })
+        })
+      } else {
+        setCurrentUser(userAuth)
+      }
+
+    })
+
+    return  () => {
+      unsubscribeFromAuth();
+    }
+  },[])
+
   return (
     <div>
       <Header/>
       <Switch>
         <Route exact path='/'  component={HomePage}/>
-        <Route path='/signin'  component={SignIn}/>
-        {/* <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/> */}
+        <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/>
       </Switch>
     </div>
   );
 }
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+})
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch( setCurrentUser(user))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
