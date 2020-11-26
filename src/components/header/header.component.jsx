@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import { createStructuredSelector } from 'reselect';
 import {auth} from '../../firebase/firebase.utils';
+
+import { selectCurrentUser } from '../../redux/user/user.selector'
 
 
 import './header.styles.scss';
@@ -14,9 +16,9 @@ const Header = ({ currentUser}) => (
             <span><Link to="/" className="btn-text f">HomePage &rarr;</Link></span>
             {
                 currentUser ?
-                <div className='option btn-text' onClick={()=>auth.signOut()}>
+                <Link className='option btn-text' to='/' onClick={()=>auth.signOut()}>
                      SIGN OUT
-                </div>
+                </Link>
                 : (
                 <Link className='option btn-text' to='/signin'>
                     SIGN IN
@@ -24,8 +26,8 @@ const Header = ({ currentUser}) => (
             }
          
         </div>
-        <div class="u-center-text u-margin-bottom-big">
-            <h2 class="heading-secondary">
+        <div className="u-center-text u-margin-bottom-big">
+            <h2 className="heading-secondary">
                 Examination made easier
             </h2>
         </div>
@@ -34,8 +36,8 @@ const Header = ({ currentUser}) => (
     </div>
 )
 
-const mapStateToProps = ({user: {currentUser}}) => ({
-    currentUser,   //currentUser:state.user.currentUser
+const mapStateToProps = createStructuredSelector ({
+    currentUser:selectCurrentUser
 })
 
 export default connect(mapStateToProps)(Header);
