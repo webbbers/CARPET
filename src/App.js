@@ -19,12 +19,13 @@ import { selectCurrentUser } from './redux/user/user.selector';
 
 
 const App = props => {
-  const {setCurrentUser} = props;
+  // const {setCurrentUser} = props;
 
   var unsubscribeFromAuth=null;
   
   useEffect(()=> {
     // eslint-disable-next-line
+    const {setCurrentUser} = props;
     unsubscribeFromAuth= auth.onAuthStateChanged(async userAuth => {
       if (userAuth){
         const userRef = await createUserProfileDocument(userAuth);

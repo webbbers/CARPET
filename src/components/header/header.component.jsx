@@ -7,13 +7,16 @@ import {auth} from '../../firebase/firebase.utils';
 import { selectCurrentUser } from '../../redux/user/user.selector'
 
 
+
+
 import './header.styles.scss';
 
 const Header = ({ currentUser}) => (
     <div className="header">
         
         <div className='options u-center-text'>
-            <span><Link to="/" className="btn-text f">HomePage &rarr;</Link></span>
+            <span><Link to="/" className="btn-text">HomePage &rarr;</Link></span>
+            <span>
             {
                 currentUser ?
                 <Link className='option btn-text' to='/' onClick={()=>auth.signOut()}>
@@ -24,13 +27,12 @@ const Header = ({ currentUser}) => (
                     SIGN IN
                 </Link> )
             }
+            </span>
+            <span><Link to="/" className="btn-text f">Create Exam &rarr;</Link></span>
          
         </div>
-        <div className="u-center-text u-margin-bottom-big">
-            <h2 className="heading-secondary">
-                Examination made easier
-            </h2>
-        </div>
+        
+    
         
        
     </div>
