@@ -28,7 +28,7 @@ const Header = ({ currentUser}) => (
                 </Link> )
             }
             </span>
-            <span><Link to="/" className="btn-text f">Create Exam &rarr;</Link></span>
+            <span><Link to="/examcreator" className="btn-text f">Create Exam &rarr;</Link></span>
          
         </div>
         

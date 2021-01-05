@@ -1,0 +1,13 @@
+.question{
+    display: block;
+    width: 40%;
+    border: 2px solid black;
+    margin: 0 auto;
+
+    .quest{
+        padding: 10px;
+    }
+    .option{
+        padding:5px 0 3px 20px
+    }
+}
