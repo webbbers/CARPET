@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import Question from '../../components/question/question.component';
+import Exam from '../../components/exam/exam.component';
 
 
 const ExamCreator= () => {
@@ -17,7 +17,7 @@ const ExamCreator= () => {
                     <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
                 </h2>
             </div>
-            <Question/>
+            <Exam/>
         </div>
     )
     
