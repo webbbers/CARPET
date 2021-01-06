@@ -7,7 +7,7 @@ const Exam = () => {
     const prop =
     
     {
-		exam_name: "Do you have and idea who I am?"
+		exam_name: "Do you have and idea who I am?",
         questions : ["<Question/>","<Question/>","<Question/>"]
     }
 
