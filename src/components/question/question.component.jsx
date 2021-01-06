@@ -16,9 +16,16 @@ const Question = () => {
     return (
         <div className="question">
             <div className="quest"> {prop.question} &nbsp;?</div>
+			<form>
             {prop.options.map( option => (
-                 <li className="option">{option}</li>
-            ))}
+			<label>
+					 <input type="radio" name={prop.question} className="option" value="{option}"/>
+					 {option}
+					 <br/>
+					 </label>
+				))
+			}
+			</form>
         </div>
     )
 }
