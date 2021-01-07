@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import Exam from '../../components/exam/exam.component';
 
 

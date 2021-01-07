@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import lapimage from '../../assets/laptopimage.png';
 
@@ -10,6 +10,7 @@ import Footer from '../../components/footer/footer.component';
 
 const HomePage = () => {
 
+    // eslint-disable-next-line
     var unsubscribeFromSnapshot=null;
     useEffect(()=>{
 
