@@ -1,7 +1,17 @@
-.exam {
+.exampage {
     .title {
         margin: auto;
         width: 40%;
         font-size: 40px;
+    }
+
+    .examResults{
+        padding: 30px;
+        display: block;
+        margin: 0 auto;
+        width: 40%;
+        border: 3px solid black;
+        text-align: center;
+        font-size: 2.5em;
     }
 }

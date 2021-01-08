@@ -1,28 +1,41 @@
 .question {
+    padding: 20px;
     display: block;
-    width: 40%;
+    width: 50%;
     border: 3px solid black;
     margin: 0 auto;
     margin-bottom: 50px;
+    max-height: 1000px;
 
+    
     .questionInfo{
         margin: 15px 0 15px 0;
         margin-bottom: 30px;
         position: relative;
         .pointInfo{
+            font-size: 15px;
             position: absolute;
             left: 5%;
             top: 10%;
         }
         .numberInfo{
+          font-size: 15px;
             position: absolute;
-            left: 90%;
+            left: 80%;
             top: 10%;
         }
     }
-    .quest {
+    .approve{
+      position: relative;
+      button{
+        left: 70%;
+        top: -20px;
+      }
+    }
+    .questionText {
+        padding-top: 200px;
         padding: 10px;
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .img {
@@ -31,74 +44,32 @@
         display: block;
         margin: auto;
     }
-    .option{
-        margin-left: 50px;
-    }
+    .answers{
+      margin-left: 20px;
+      .answerOption{
+        color: black;
+        padding-left: 10px;
+        font-size: 20px;
+        cursor: pointer;
 
-    .optionContainer {
-        display: block;
-        position: relative;
-        padding-left: 35px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 22px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+        &:hover{
+          color: rgb(87, 136, 192);
+          transform: scale(1.5);
+        }
+        &:focus{
+          outline: none;
+        }
       }
-      
-      /* Hide the browser's default checkbox */
-      .optionContainer input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-      }
-      
-      /* Create a custom checkbox */
-      .checkmark {
-        position: absolute;
-        top: 0;
-        left: 50px;
-        height: 25px;
-        width: 25px;
-        background-color: #eee;
-      }
-      
-      /* On mouse-over, add a grey background color */
-      .optionContainer:hover input ~ .checkmark {
-        background-color: #ccc;
-      }
-      
-      /* When the checkbox is checked, add a blue background */
-      .optionContainer input:checked ~ .checkmark {
-        background-color: #2196F3;
-      }
-      
-      /* Create the checkmark/indicator (hidden when not checked) */
-      .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-      }
-      
-      /* Show the checkmark when checked */
-      .optionContainer input:checked ~ .checkmark:after {
-        display: block;
-      }
-      
-      /* Style the checkmark/indicator */
-      .optionContainer .checkmark:after {
-        left: 9px;
-        top: 5px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
+    }
+    
+   
+   input[type=radio]:checked ~ .check {
+      border: 4px solid rgb(8, 164, 211);
+   }
+   input[type=radio]:checked ~ .check::before {
+      background: rgb(21, 160, 202);
+   }
+   input[type=radio]:checked ~ label {
+      color: rgb(21, 160, 202);
+   }
 }
