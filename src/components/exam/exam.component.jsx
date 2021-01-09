@@ -2,11 +2,12 @@ import React,{useState} from 'react';
 import Question from '../question/question.component';
 import './exam.styles.scss'
 
+
 const Exam = () => {
 
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [score,setScore] = useState(0)
-    const [showScore,setShowScore] = useState(false)
+    // const [showScore,setShowScore] = useState(false)
     const maxScore=25
     const questions = [
         {

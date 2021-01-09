@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import HomePage from './pages/homepage/homepage.component';
 import SignInAndSignUpPage from './pages/sign-in-up/sign-in-up.component';
 import ExamCreator from './pages/exam-create/examCreator.component';
+import Exam from './components/exam/exam.component';
 import Header from './components/header/header.component';
 
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
@@ -56,6 +57,7 @@ const App = props => {
         <Route exact path='/'  component={HomePage}/>
         <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/>
         <Route exact path ='/examcreator' component={ExamCreator}/>
+        <Route exact path ='/exam' component={Exam}/>
       </Switch>
     </div>
   );
