@@ -25,15 +25,13 @@ const ExamCreator= () => {
         },
         {
             id:20,
-            type:"MultipleChoice",
+            type:"TrueFalse",
             points:10,
             // imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
             questionText:"How old am I ?",
             answerOptions : [
                 { answerText: '18', isCorrect: false},
-                { answerText: '28', isCorrect: false},
                 { answerText: '22', isCorrect: true},
-                { answerText: '29', isCorrect: false},
             ]
             
         }
@@ -44,7 +42,7 @@ const ExamCreator= () => {
     }
 
     const editedHandler = (id,newContent) => {
-        setQuestions(questions.map(question => question.questionText == id ? newContent:question))
+        setQuestions(questions.map(question => question.id == id ? newContent:question))
     }
 
     const addmcQuestionHandler = () => {
@@ -81,7 +79,8 @@ const ExamCreator= () => {
                     <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
                 </h2>
             </div>
-            <div><input type="text" placeholder="Exam Name"/></div>
+            <div><input type="text" placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/></div>
+            <div>{examName}</div>
             {questions.map(question => (
                 <div>
                     {question.type == "MultipleChoice" ?
@@ -107,6 +106,7 @@ const ExamCreator= () => {
                 <button className="btn btn-green" > New Exam</button>
                 <button className="btn btn-green"> Save the Exam</button>
             </div>
+
         </div>
     )
     

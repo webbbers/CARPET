@@ -30,7 +30,7 @@ const McQuestion = props => {
         
     // },
     const saveHandler = () => {
-        props.editedHandler(props.id,
+        props.editedHandler(question.id,
             {
                 id:props.id,
                 type:"MultipleChoice",
@@ -43,7 +43,7 @@ const McQuestion = props => {
         <div className="mcQuestion">
             <div>{question.type}</div>
             <div className="questionText">
-                <input type="text" name="name" placeholder="Question" onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
             </div>
             <div className="options">
                 <div>
