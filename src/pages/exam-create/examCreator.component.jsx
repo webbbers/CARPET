@@ -6,9 +6,10 @@ import McQuestion from '../../components/cquestion/mcQuestion.component';
 
 const ExamCreator= () => {
 
-    const [examName,setExamName]=useState('')
+    const [point,setPoint] = useState(0)
+    const [examName,setExamName] = useState('')
     const [id,setId] = useState(1)
-    const [questions,setQuestions]= useState([
+    const [questions,setQuestions] = useState([
         {
             id:19,
             type:"MultipleChoice",
@@ -20,20 +21,15 @@ const ExamCreator= () => {
                 { answerText: 'Tayfur', isCorrect: false},
                 { answerText: 'Sarp', isCorrect: false},
                 { answerText: 'Kuzey', isCorrect: false},
-            ]
-            
+            ] 
         },
         {
             id:20,
             type:"TrueFalse",
             points:10,
-            // imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
+            imageURL: "https://avatars2f.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
             questionText:"How old am I ?",
-            answerOptions : [
-                { answerText: '18', isCorrect: false},
-                { answerText: '22', isCorrect: true},
-            ]
-            
+            isCorrect:false          
         }
     ])
     
@@ -49,12 +45,13 @@ const ExamCreator= () => {
         setQuestions([...questions,{
             id:id,
             type:  "MultipleChoice",
+            imageUrl:'',
             questionText: '',
             answerOptions:[
-                { answerText: '18', isCorrect: false},
-                { answerText: '28', isCorrect: false},
-                { answerText: '22', isCorrect: false},
-                { answerText: '29', isCorrect: false},
+                { answerText: '', isCorrect: false},
+                { answerText: '', isCorrect: false},
+                { answerText: '', isCorrect: false},
+                { answerText: '', isCorrect: false},
             ] 
         }])
         setId(id+1)
@@ -63,15 +60,16 @@ const ExamCreator= () => {
         setQuestions([...questions,{
             id:id,
             type:  "TrueFalse",
+            points:0,
+            imageUrl:"",
             questionText: '',
-            answerOptions:[
-                { answerText: '18', isCorrect: false},
-                { answerText: '28', isCorrect: false}
-            ] 
+            isCorrect:true
         }])
         setId(id+1)
     }
-
+    const logExam = () => {
+        console.log(questions)
+    }
     return (
         <div className='exampage'>
             <div className="u-center-text u-margin-bottom-big">
@@ -79,8 +77,12 @@ const ExamCreator= () => {
                     <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
                 </h2>
             </div>
-            <div><input type="text" placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/></div>
-            <div>{examName}</div>
+            <div>
+                <input type="text" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
+                <input type="text" required placeholder="Exam Points" onChange={(e)=>setPoint(Number(e.target.value))}/>
+            </div>
+            <div>{examName} &nbsp; &nbsp; {point}</div>
+            
             {questions.map(question => (
                 <div>
                     {question.type == "MultipleChoice" ?
@@ -104,7 +106,7 @@ const ExamCreator= () => {
             <div className="addQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
             <div className="examButtons">
                 <button className="btn btn-green" > New Exam</button>
-                <button className="btn btn-green"> Save the Exam</button>
+                <button className="btn btn-green" onClick={()=>logExam()}> Save the Exam</button>
             </div>
 
         </div>

@@ -1,10 +1,11 @@
 import React,{useState} from 'react';
 import Question from '../question/question.component';
+import TQuestion from '../question/tQuestion.component';
 import './exam.styles.scss'
 
 
 const Exam = () => {
-
+    
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [score,setScore] = useState(0)
     // const [showScore,setShowScore] = useState(false)
@@ -24,20 +25,14 @@ const Exam = () => {
             
         },
         {
-            type:"MultipleChoice",
+            type:"TrueFalse",
             points:10,
             // imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
-            questionText:"How old am I ?",
-            answerOptions : [
-                { answerText: '18', isCorrect: false},
-                { answerText: '28', isCorrect: false},
-                { answerText: '22', isCorrect: true},
-                { answerText: '29', isCorrect: false},
-            ]
-            
+            questionText:"Am I a soldier ?",
+            isCorrect:false
         }
     ]
-
+    
     const approve = (correct,point) => {
         setCurrentQuestion(currentQuestion+1)
         if (correct) {
@@ -46,17 +41,20 @@ const Exam = () => {
     }
     return (
         <div className='exampage'>
-            {/* {questions.map( (question,index) => (
-                <Question question={question} index={index+1}/>
-            ))} */}
-
+            <div> SOFTWARE ENGINEERING EXAM</div>
             {questions.length > currentQuestion ? 
-                <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} /> 
+                
+                questions[currentQuestion].type =="MultipleChoice"?
+                    <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} />
+                :
+                    <TQuestion question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} />
                 : 
+            
                 <div className="examResults">
                     <h1>END OF EXAM</h1>
-                    <p1> You have scored {score} out of {maxScore}</p1>
-                </div>}
+                    <div> You have scored {score} out of {maxScore}</div>
+                </div>
+            }
         </div>
     )
     

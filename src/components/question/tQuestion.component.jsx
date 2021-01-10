@@ -2,13 +2,13 @@ import React,{useState} from 'react';
 
 import './question.styles.scss'
 
-const Question = props => {
+const TQuestion = props => {
 
     const { question,questionNumber,approve } = props;
-    const [correct,setCorrect] = useState(0)  // 1 for false 2 for true
+    const [correct,setCorrect] = useState(false)  
     
     const optionClickedHandler = status => {
-        if (status) {
+        if (status == question.isCorrect) {
             setCorrect(true)
         } else {
             setCorrect(false)
@@ -18,11 +18,7 @@ const Question = props => {
         // type:"MultipleChoice",
         // imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
         // questionText:"What is my name ?",
-        // answerOptions : [
-        //     { answerText: 'Talha', isCorrect: true},
-        //     { answerText: 'Tayfur', isCorrect: false},
-        //     { answerText: 'Sarp', isCorrect: false},
-        //     { answerText: 'Kuzey', isCorrect: false},
+        // isCorrect:false
         // ]
         
     return (
@@ -35,12 +31,12 @@ const Question = props => {
             <div className="questionText"> {question.questionText} </div>
             <div className="answers">
                 <form>
-                    {question.answerOptions.map( answerOption => (
-                        <div>
-                            <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect)}/>
-                            <label className="answerOption">{answerOption.answerText}</label>
-                        </div>
-                    ))}
+                    <div>
+                        <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(true)}/>
+                        <label className="answerOption">True</label>
+                        <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(false)}/>
+                        <label className="answerOption">False</label>
+                    </div>
                 </form>
             </div>
 	
@@ -50,4 +46,4 @@ const Question = props => {
 }
 
 
-export default Question;
+export default TQuestion;
