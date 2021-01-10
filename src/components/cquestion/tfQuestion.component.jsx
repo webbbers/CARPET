@@ -23,9 +23,9 @@ const TfQuestion = props => {
         
     // },
     const saveHandler = () => {
-        props.editedHandler(props.id,
+        props.editedHandler(question.id,
             {
-                id:props.id,
+                id:question.id,
                 type:"TrueFalse",
                 points:15,
                 questionText:text,

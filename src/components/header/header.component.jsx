@@ -29,7 +29,7 @@ const Header = ({ currentUser}) => (
             }
             </span>
             <span><Link to="/examcreator" className="btn-text f">Create Exam &rarr;</Link></span>
-            <span><Link to="/exam" className="btn-text f">Example Exam &rarr;</Link></span>
+            <span><Link to="/exam/n5L8RXdGTWN5Og9kdUHh" className="btn-text f">Example Exam &rarr;</Link></span>
          
         </div>
         

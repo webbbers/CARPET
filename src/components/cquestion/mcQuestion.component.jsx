@@ -32,7 +32,7 @@ const McQuestion = props => {
     const saveHandler = () => {
         props.editedHandler(question.id,
             {
-                id:props.id,
+                id:question.id,
                 type:"MultipleChoice",
                 points:15,
                 questionText:text,

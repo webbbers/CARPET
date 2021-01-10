@@ -57,7 +57,7 @@ const App = props => {
         <Route exact path='/'  component={HomePage}/>
         <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/>
         <Route exact path ='/examcreator' component={ExamCreator}/>
-        <Route exact path ='/exam' component={Exam}/>
+        <Route path ='/exam/' component={Exam}/>
       </Switch>
     </div>
   );

@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 
+import firebase from '../../firebase/firebase.utils';
 import './examCreator.styles.scss';
 import TfQuestion from '../../components/cquestion/tfQuestion.component';
 import McQuestion from '../../components/cquestion/mcQuestion.component';
@@ -67,9 +68,23 @@ const ExamCreator= () => {
         }])
         setId(id+1)
     }
-    const logExam = () => {
-        console.log(questions)
+    const sendExam = () => {
+        let db =firebase.firestore();
+        db.collection("Exams").add({
+            author:"Sarp",
+            points:point,
+            examName:examName,
+            questions:questions
+        })
+        // console.log({
+        //         author:"Sarp",
+        //         points:point,
+        //         examName:examName,
+        //         questions:questions
+        //     })
+
     }
+
     return (
         <div className='exampage'>
             <div className="u-center-text u-margin-bottom-big">
@@ -106,7 +121,7 @@ const ExamCreator= () => {
             <div className="addQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
             <div className="examButtons">
                 <button className="btn btn-green" > New Exam</button>
-                <button className="btn btn-green" onClick={()=>logExam()}> Save the Exam</button>
+                <button className="btn btn-green" onClick={()=>sendExam()}> Save the Exam</button>
             </div>
 
         </div>
