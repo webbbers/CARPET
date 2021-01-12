@@ -8,7 +8,7 @@ const TQuestion = props => {
     const [correct,setCorrect] = useState(false)  
     
     const optionClickedHandler = status => {
-        if (status == question.isCorrect) {
+        if (status === question.isCorrect) {
             setCorrect(true)
         } else {
             setCorrect(false)
@@ -40,7 +40,7 @@ const TQuestion = props => {
                 </form>
             </div>
 	
-           <div className="approve"> <button class="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
+           <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
         </div>
     )
 }

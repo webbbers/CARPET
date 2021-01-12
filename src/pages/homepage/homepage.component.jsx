@@ -43,7 +43,7 @@ const HomePage = () => {
                         <p className="paragraph">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio voluptatibus nihil rem tempora iusto, illo iure aut, nemo ab.
                         </p>
-                        <Link to="signin"><button class="btn btn--green">Next Step &rarr;</button></Link>
+                        <Link to="signin"><button className="btn btn--green">Next Step &rarr;</button></Link>
                     </div>
                     <div className="col-1-of-2">
                         <img alt="laptop" src={lapimage} className="lapimage"/>

@@ -7,7 +7,7 @@ import McQuestion from '../../components/cquestion/mcQuestion.component';
 
 const ExamCreator= () => {
 
-    const [point,setPoint] = useState(0)
+    const [maxScore,setMaxScore] = useState(0)
     const [examName,setExamName] = useState('')
     const [id,setId] = useState(1)
     const [questions,setQuestions] = useState([
@@ -39,7 +39,7 @@ const ExamCreator= () => {
     }
 
     const editedHandler = (id,newContent) => {
-        setQuestions(questions.map(question => question.id == id ? newContent:question))
+        setQuestions(questions.map(question => question.id === id ? newContent:question))
     }
 
     const addmcQuestionHandler = () => {
@@ -72,7 +72,7 @@ const ExamCreator= () => {
         let db =firebase.firestore();
         db.collection("Exams").add({
             author:"Sarp",
-            points:point,
+            points:maxScore,
             examName:examName,
             questions:questions
         })
@@ -86,7 +86,7 @@ const ExamCreator= () => {
     }
 
     return (
-        <div className='exampage'>
+        <div className='examCreatorPage'>
             <div className="u-center-text u-margin-bottom-big">
                 <h2 className="heading-primary">
                     <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
@@ -94,20 +94,22 @@ const ExamCreator= () => {
             </div>
             <div>
                 <input type="text" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
-                <input type="text" required placeholder="Exam Points" onChange={(e)=>setPoint(Number(e.target.value))}/>
+                <input type="text" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
             </div>
-            <div>{examName} &nbsp; &nbsp; {point}</div>
+            <div>{examName} &nbsp; &nbsp; {maxScore}</div>
             
             {questions.map(question => (
-                <div>
-                    {question.type == "MultipleChoice" ?
+                <div key={question.id}>
+                    {question.type === "MultipleChoice" ?
                     <McQuestion 
+                        key={question.id}
                         question={question}
                         editedHandler={(id,newContent)=>editedHandler(id,newContent)}
                         deleteHandler={(questionText) => deleteHandler(questionText)}
                     />
                     : 
                     <TfQuestion
+                        key={question.id}
                         question={question}
                         editedHandler={(id,newContent)=>editedHandler(id,newContent)}
                         deleteHandler={(questionText) => deleteHandler(questionText)}

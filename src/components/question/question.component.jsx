@@ -36,7 +36,7 @@ const Question = props => {
             <div className="answers">
                 <form>
                     {question.answerOptions.map( answerOption => (
-                        <div>
+                        <div key={answerOption.answerText}>
                             <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect)}/>
                             <label className="answerOption">{answerOption.answerText}</label>
                         </div>
@@ -44,7 +44,7 @@ const Question = props => {
                 </form>
             </div>
 	
-           <div className="approve"> <button class="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
+           <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
         </div>
     )
 }

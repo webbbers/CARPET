@@ -7,6 +7,7 @@ const TfQuestion = props => {
     const {question} = props
 
     const [editing,setEditing] = useState(false);
+    const [point,setPoint] = useState(0)
     const [text,setText] = useState('')
     const [correctness,setCorrectness] = useState(false)
 
@@ -37,6 +38,8 @@ const TfQuestion = props => {
             <div>{question.type}</div>
             <div className="questionText">
                 <input type="text" name="name" placeholder="Question" onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
+
             </div>
             
             <div>

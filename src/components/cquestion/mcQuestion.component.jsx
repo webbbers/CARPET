@@ -5,8 +5,8 @@ import './mcQuestion.styles.scss';
 const McQuestion = props => {
 
     const {question} = props
-
     const [editing,setEditing] = useState(false);
+    const [point,setPoint] = useState(0)
     const [text,setText] = useState('')
     const [options,setOptions] = useState([
         {answerText:"",isCorrect:false},
@@ -44,6 +44,7 @@ const McQuestion = props => {
             <div>{question.type}</div>
             <div className="questionText">
                 <input type="text" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
             </div>
             <div className="options">
                 <div>
