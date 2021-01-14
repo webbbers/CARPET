@@ -17,22 +17,19 @@ const MyExams = ({currentUser}) => {
     useEffect( () =>{
         setFetching(true)
         if(currentUser){
-            let temp=[]
+            
             
             firestore.collection("Exams").where("authorId", "==", currentUser.id)
-                .get()
-                .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) =>{
-                        // doc.data() is never undefined for query doc snapshots
-                        // console.log(doc.id, " => ", doc.data());
+                .onSnapshot( (querySnapshot) => {
+                    let temp=[]
+                   querySnapshot.forEach( (doc) => {
                         temp.push(doc.data())
-                    });
-                    setExams(temp)
-                    setFetching(false)
+                        console.log(doc.data())
+                   })
+                   console.log("this is temp",temp)
+                   setExams(temp)
+                   setFetching(false)
                 })
-                .catch((error) => {
-                    console.log("Error getting documents: ", error);
-                });
         }
     },[currentUser])
 
