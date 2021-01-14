@@ -19,9 +19,15 @@ const Header = ({ currentUser}) => (
             <span>
             {
                 currentUser ?
-                <Link className='option btn-text' to='/' onClick={()=>auth.signOut()}>
-                     SIGN OUT
-                </Link>
+                <div className="links">
+                    <Link className='option btn-text' to='/' onClick={()=>auth.signOut()}>
+                        SIGN OUT
+                    </Link>
+                    &emsp;&emsp;&emsp;&emsp;
+                    <Link className='option btn-text' to='/myexams'>
+                        My Exams
+                    </Link>
+                </div>
                 : (
                 <Link className='option btn-text' to='/signin'>
                     SIGN IN

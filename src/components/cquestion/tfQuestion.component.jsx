@@ -6,7 +6,7 @@ const TfQuestion = props => {
 
     const {question} = props
 
-    const [editing,setEditing] = useState(false);
+    // const [editing,setEditing] = useState(false);
     const [point,setPoint] = useState(0)
     const [text,setText] = useState('')
     const [correctness,setCorrectness] = useState(false)
@@ -28,7 +28,7 @@ const TfQuestion = props => {
             {
                 id:question.id,
                 type:"TrueFalse",
-                points:15,
+                points:point,
                 questionText:text,
                 isCorrect:correctness
             });
@@ -49,10 +49,8 @@ const TfQuestion = props => {
             <div>{correctness?"true":"false"}</div>
             
             <div className='buttons'>
-                {/* <button onClick={()=>setEditing(!editing)}>{editing? 'Cancel' : 'Edit'}</button> */}
-                {editing ? null :<button onClick={() =>props.deleteHandler(question.questionText)}>Delete</button>}
+                <button onClick={() =>props.deleteHandler(question.questionText)}>Delete</button>
                 <button onClick={()=>saveHandler()}> SAVE </button>
-                {/* {editing ?<button onClick={()=>saveHandler()}>Save</button> : null} */}
             </div>
         </div>
     )

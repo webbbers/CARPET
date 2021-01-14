@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 
-import firebase from '../../firebase/firebase.utils';
+import { firestore } from '../../firebase/firebase.utils';
 import './examCreator.styles.scss';
 import TfQuestion from '../../components/cquestion/tfQuestion.component';
 import McQuestion from '../../components/cquestion/mcQuestion.component';
@@ -69,8 +69,8 @@ const ExamCreator= () => {
         setId(id+1)
     }
     const sendExam = () => {
-        let db =firebase.firestore();
-        db.collection("Exams").add({
+        
+        firestore.collection("Exams").add({
             author:"Sarp",
             points:maxScore,
             examName:examName,

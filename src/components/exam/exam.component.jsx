@@ -9,7 +9,7 @@ import './exam.styles.scss'
 const Exam = (props) => {
     
     const [fetching,setFetching] = useState(true)
-    const [seconds,setSeconds] = useState(10)
+    const [seconds,setSeconds] = useState(100)
     const [examName,setExamName] = useState('')
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [score,setScore] = useState(0)
@@ -39,7 +39,6 @@ const Exam = (props) => {
     
     const examId=props.location.pathname.slice(6);
     useEffect( () =>{
-        let isMounted=true;
         const fetchExam = async () =>{
             let db =firebase.firestore();
             let example=db.collection("Exams").doc(examId).get()
@@ -51,7 +50,6 @@ const Exam = (props) => {
             setFetching(false)
         }
         fetchExam()
-        return () => { isMounted = false };
     },[examId])
     useEffect(()=>{
         if(seconds>0){
@@ -74,6 +72,7 @@ const Exam = (props) => {
                 examName:examName,
                 score:score
             })
+            setSeconds(0)
             console.log("end of exam")
         }
     }
@@ -82,7 +81,7 @@ const Exam = (props) => {
             
             <div>{props.location.pathname.slice(6)}</div>
             <div className="examName"> {examName}</div>
-            {fetching?<Spinner/>
+            {fetching? <Spinner/>
             :
             questions.length > currentQuestion ? 
                 

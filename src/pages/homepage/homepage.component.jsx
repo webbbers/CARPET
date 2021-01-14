@@ -13,11 +13,13 @@ const HomePage = () => {
     // eslint-disable-next-line
     var unsubscribeFromSnapshot=null;
     useEffect(()=>{
-
-        const collectionRef=firestore.collection('users');
-        collectionRef.onSnapshot(async snapshot =>{
-            console.log(snapshot);
-        })
+        firestore.collection("users").get().then(function(querySnapshot) {
+            console.log("Users")
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
+        });
     })
     return(
         <div className='homepage'>

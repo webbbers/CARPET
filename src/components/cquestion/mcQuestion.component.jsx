@@ -5,7 +5,7 @@ import './mcQuestion.styles.scss';
 const McQuestion = props => {
 
     const {question} = props
-    const [editing,setEditing] = useState(false);
+    // const [editing,setEditing] = useState(false);
     const [point,setPoint] = useState(0)
     const [text,setText] = useState('')
     const [options,setOptions] = useState([
@@ -34,7 +34,7 @@ const McQuestion = props => {
             {
                 id:question.id,
                 type:"MultipleChoice",
-                points:15,
+                points:point,
                 questionText:text,
                 answerOptions:options
             });
@@ -74,10 +74,8 @@ const McQuestion = props => {
             <div>{options[3].answerText} {options[3].isCorrect?"true":"not"}</div>
             
             <div className='buttons'>
-                {/* <button onClick={()=>setEditing(!editing)}>{editing? 'Cancel' : 'Edit'}</button> */}
-                {editing ? null :<button onClick={() =>props.deleteHandler(question.questionText)}>Delete</button>}
+                <button onClick={() =>props.deleteHandler(question.questionText)}>Delete</button>
                 <button onClick={()=>saveHandler()}> SAVE </button>
-                {/* {editing ?<button onClick={()=>saveHandler()}>Save</button> : null} */}
             </div>
         </div>
     )
