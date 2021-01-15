@@ -1,7 +1,7 @@
 .question {
     padding: 20px;
     display: block;
-    border: 3px solid black;
+    //border: 3px solid black;
     margin: 0 auto;
     margin-bottom: 50px;
     max-height: 1000px;
@@ -26,8 +26,8 @@
     .approve{
       position: relative;
       button{
-        left: 70%;
-        top: -20px;
+        left: 75%;
+        top: 0px;
       }
     }
     .questionText {
@@ -44,6 +44,25 @@
     }
     .answers{
       margin-left: 20px;
+
+      .answersOptionlist{
+        background: aliceblue;
+        border: 1px solid aquamarine;
+        border-radius: 5px;
+        padding: 8px 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .Input{
+          margin: 10px;
+          padding: 5px;
+        }
+  
+      }
+
+      
       .answerOption{
         color: black;
         padding-left: 10px;

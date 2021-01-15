@@ -36,8 +36,8 @@ const Question = props => {
             <div className="answers">
                 <form>
                     {question.answerOptions.map( answerOption => (
-                        <div key={answerOption.answerText}>
-                            <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect)}/>
+                        <div className="answersOptionlist" key={answerOption.answerText}>
+                            <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect)}/>
                             <label className="answerOption">{answerOption.answerText}</label>
                         </div>
                     ))}

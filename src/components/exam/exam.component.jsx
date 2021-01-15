@@ -3,7 +3,8 @@ import firebase from '../../firebase/firebase.utils';
 import Question from '../question/question.component';
 import TQuestion from '../question/tQuestion.component';
 import Spinner from '../UI/Spinner/spinner.component';
-import './exam.styles.scss'
+import './exam.styles.scss';
+
 
 
 const Exam = (props) => {
@@ -78,8 +79,13 @@ const Exam = (props) => {
     }
     return (
         <div className='exampage'>
-            
+            <header className="Header">
             <div>{props.location.pathname.slice(6)}</div>
+            <div className="timer">
+                <div className="timer_text">Time Left</div>
+                <div className="timer_sec">{seconds}</div>
+            </div>
+            </header>
             <div className="examName"> {examName}</div>
             {fetching? <Spinner/>
             :
@@ -96,7 +102,7 @@ const Exam = (props) => {
                     <div> You have scored {score} out of {maxScore}</div>
                 </div>
             }
-            <div>{seconds}</div>
+            
         </div>
     )
     
