@@ -6,19 +6,25 @@
     .questionText{
         margin-left: 20px;
     }
-    .option{
-        margin-left: 20px;
-        display: inline-block;
-        width: 40%;
-        margin-top: 5px;
-
-        border: 1px solid black;
-
-        .correctness{
-            text-align: right;
-            padding-right: 3em;
+    .options{
+        text-align: center;
+        .option{
+            margin-left: 20px;
+            display: inline-block;
+            width: 40%;
+            margin-top: 5px;
+    
+            border: 1px solid black;
+    
+            .correctness{
+                text-align: right;
+                padding-right: 3em;
+            }
         }
     }
     
+    .addOption{
+        text-align: center;
+    }
 
 }

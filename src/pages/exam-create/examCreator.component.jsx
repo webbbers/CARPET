@@ -9,10 +9,10 @@ const ExamCreator= () => {
 
     const [maxScore,setMaxScore] = useState(0)
     const [examName,setExamName] = useState('')
-    const [id,setId] = useState(1)
+    const [id,setId] = useState(2)
     const [questions,setQuestions] = useState([
         {
-            id:19,
+            id:0,
             type:"MultipleChoice",
             points:15,
             imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
@@ -25,17 +25,17 @@ const ExamCreator= () => {
             ] 
         },
         {
-            id:20,
+            id:1,
             type:"TrueFalse",
             points:10,
-            imageURL: "https://avatars2f.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",
+            imageURL: "",
             questionText:"How old am I ?",
             isCorrect:false          
         }
     ])
     
-    const deleteHandler = questionText =>{
-        setQuestions(questions.filter(question => question.questionText !== questionText))
+    const deleteHandler = id =>{
+        setQuestions(questions.filter(question => question.id !== id))
     }
 
     const editedHandler = (id,newContent) => {
