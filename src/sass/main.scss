@@ -10,5 +10,10 @@
 @import 'layout/grid';
 
 @import 'components/button'; // probably will be removed as react has its own components
+@import 'components/feature-box';
+@import 'components/card';
+@import 'components/form';
+
+@import 'pages/home';
 
 
