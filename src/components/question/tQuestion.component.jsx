@@ -24,17 +24,17 @@ const TQuestion = props => {
     return (
         <div className="question">
             <div className="questionInfo">
-                <div className="pointInfo"> {question.points} Points </div>
-                <div className="numberInfo">Question {questionNumber}</div>
+                <div className="pointInfo"> Question {questionNumber} </div>
+                <div className="numberInfo">{question.points} Points</div>
             </div>
 			{question.imageURL ? <div><img id="qphoto" alt="questImage" className="img" src={question.imageURL}/></div> : null}
             <div className="questionText"> {question.questionText} </div>
             <div className="answers">
                 <form>
                     <div>
-                        <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(true)}/>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(true)}/>
                         <label className="answerOption">True</label>
-                        <input type="radio" name="radAnswer" onClick={()=>optionClickedHandler(false)}/>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(false)}/>
                         <label className="answerOption">False</label>
                     </div>
                 </form>

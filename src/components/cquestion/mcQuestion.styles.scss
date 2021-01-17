@@ -9,7 +9,7 @@
     .questionOrder{
         position: absolute;
         left: 3%;
-        top: 8%;
+        top: 3rem;
     }
 
     .questionText{
@@ -20,7 +20,7 @@
             width: 76%;
             padding: 1rem 1.66rem;
             margin: 0.66rem 0.45rem;
-            // margin-left: 50px;
+            font-size: 2rem;
             display: inline-block;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -28,10 +28,12 @@
         }
         .mcPointInput{
             display: inline-block;
-            width: 5%;
-            padding: 11px 20px;
+            width: 10%;
+            padding: 6px 4px;
             border-radius: 4px;
             margin: 0px 5px;
+            text-align: center;
+            font-size: 20px;
         }
     }
     .options{

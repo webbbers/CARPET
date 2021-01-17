@@ -73,10 +73,10 @@ const McQuestion = props => {
     }
     return (
         <div className="mcQuestion">
-             <div className="questionOrder">{props.order+1}</div>
+             <div className="questionOrder">Q{props.order+1}</div>
             <div className="questionText">
                 <input type="text" className="mcQuestionInput" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
-                <input type="text" className="mcPointInput" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
+                <input type="text" className="mcPointInput" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/> {point}
             </div>
             <div className="options">
                 {options.map(option => (

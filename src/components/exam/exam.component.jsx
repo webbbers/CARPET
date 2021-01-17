@@ -37,21 +37,27 @@ const Exam = (props) => {
         //     isCorrect:false
         // }
     ])
-    
+    const shuffleExam = (arr) => {
+        let temp = [...arr]
+        temp.sort( () => Math.random() - 0.5);
+        return temp
+    }
     const examId=props.location.pathname.slice(6);
-    useEffect( () =>{
+    useEffect(  () =>{
         const fetchExam = async () =>{
             let db =firebase.firestore();
             let example=db.collection("Exams").doc(examId).get()
             let exam= (await example).data()
             console.log(exam)
-            setQuestions(exam.questions)
+            let shuffledQuestions = await  shuffleExam(exam.questions)
+            setQuestions(shuffledQuestions)
             setMaxScore(exam.points)
             setExamName(exam.examName)
             setFetching(false)
         }
         fetchExam()
     },[examId])
+
     useEffect(()=>{
         if(seconds>0){
             let timer =setTimeout(() => setSeconds(seconds-1),1000);
@@ -60,6 +66,8 @@ const Exam = (props) => {
             alert("time is up")
         }
     },[seconds])
+
+    
 
     const approve = (correct,point) => {
         setCurrentQuestion(currentQuestion+1)
@@ -87,7 +95,7 @@ const Exam = (props) => {
             </div>
             </header>
             <div className="examName"> {examName}</div>
-            {fetching? <Spinner/>
+            {fetching ? <Spinner/>
             :
             questions.length > currentQuestion ? 
                 

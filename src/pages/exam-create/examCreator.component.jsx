@@ -29,7 +29,7 @@ const ExamCreator= () => {
             type:"TrueFalse",
             points:10,
             imageURL: "",
-            questionText:"How old am I ?",
+            questionText:"Intial Trial True-False ?",
             isCorrect:false          
         }
     ])
