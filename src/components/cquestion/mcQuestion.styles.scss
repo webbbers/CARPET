@@ -1,30 +1,99 @@
 .mcQuestion{
-    border: 3px solid black;
+    border: 3px solid rgb(112, 110, 110);
+    border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 20px ;
+    padding-top: 3.5rem;
+    .questionOrder{
+        position: absolute;
+        left: 3%;
+        top: 8%;
+    }
 
     .questionText{
-        margin-left: 20px;
+        margin-left: 1.66rem;
+        margin-right: 1.66rem;
+        text-align: center;
+        .mcQuestionInput{
+            width: 76%;
+            padding: 1rem 1.66rem;
+            margin: 0.66rem 0.45rem;
+            // margin-left: 50px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .mcPointInput{
+            display: inline-block;
+            width: 5%;
+            padding: 11px 20px;
+            border-radius: 4px;
+            margin: 0px 5px;
+        }
     }
     .options{
         text-align: center;
         .option{
             margin-left: 20px;
             display: inline-block;
+            padding: 10px 5px;
             width: 40%;
             margin-top: 5px;
     
-            border: 1px solid black;
-    
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            
+            .optionInput{
+                width: 90%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
             .correctness{
-                text-align: right;
-                padding-right: 3em;
+                display: inline-block;
+                margin: 0 15px;
+            }
+            .mcOptionDeleteButton{
+                margin: 0 15px;
+                
+                background-color: #ca3333; 
+                border: none;
+                color: white;
+                padding: 10px 16px;
+                border-radius: 3px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                
             }
         }
     }
-    
-    .addOption{
+    .addOptionDiv{
         text-align: center;
-    }
+        margin: 1rem 0;
+        .addOption{
+            text-align: center;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
 
+            &:hover{
+                background-color: green;
+            }
+        }
+    
+    }
+    
 }

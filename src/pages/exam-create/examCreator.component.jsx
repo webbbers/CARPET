@@ -92,9 +92,9 @@ const ExamCreator= () => {
                     <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
                 </h2>
             </div>
-            <div>
-                <input type="text" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
-                <input type="text" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
+            <div className="examCreateHeader">
+                <input type="text" className="examNameInput" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
+                <input type="text" className="examPointInput" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
             </div>
             <div>{examName} &nbsp; &nbsp; {maxScore}</div>
             
@@ -102,6 +102,7 @@ const ExamCreator= () => {
                 <div key={question.id}>
                     {question.type === "MultipleChoice" ?
                     <McQuestion 
+                        order={questions.indexOf(question)}
                         key={question.id}
                         question={question}
                         editedHandler={(id,newContent)=>editedHandler(id,newContent)}
@@ -109,6 +110,7 @@ const ExamCreator= () => {
                     />
                     : 
                     <TfQuestion
+                        order={questions.indexOf(question)}
                         key={question.id}
                         question={question}
                         editedHandler={(id,newContent)=>editedHandler(id,newContent)}
@@ -118,9 +120,10 @@ const ExamCreator= () => {
                 }
                </div>
             ))}
-
-            <div className="addQuestion" onClick={() => addmcQuestionHandler()}> + Add MultipleChoice</div> 
-            <div className="addQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
+            <div className="addQuestion">
+                <div className="addTfQuestion" onClick={() => addmcQuestionHandler()}> + Add MultipleChoice</div> 
+                <div className="addMcQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
+            </div>
             <div className="examButtons">
                 <button className="btn btn-green" > New Exam</button>
                 <button className="btn btn-green" onClick={()=>sendExam()}> Save the Exam</button>

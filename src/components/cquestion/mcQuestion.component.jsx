@@ -73,23 +73,23 @@ const McQuestion = props => {
     }
     return (
         <div className="mcQuestion">
-            <div>{question.type}</div>
+             <div className="questionOrder">{props.order+1}</div>
             <div className="questionText">
-                <input type="text" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
-                <input type="text" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
+                <input type="text" className="mcQuestionInput" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" className="mcPointInput" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
             </div>
             <div className="options">
                 {options.map(option => (
                     <div className="option" key={option.key}>
-                        <div><input type="text" placeholder="Option" onChange={(e)=>updateState(true,option.key,e.target.value)}/></div>
+                        <div><input type="text" className="optionInput" placeholder="Option" onChange={(e)=>updateState(true,option.key,e.target.value)}/></div>
                         <div className="correctness">correct &nbsp;<input type="checkbox" onChange={()=>updateState(false,option.key,false)}/></div>
-                        <button onClick={()=>deleteOptionHandler(option.key)}>DELETE</button>
+                        <button className="mcOptionDeleteButton" onClick={()=>deleteOptionHandler(option.key)}>DELETE</button>
                      </div>
                 ))}
             </div>
-            <div className="addOption"><button  onClick={()=>addOption()}> ADD OPTION</button></div>
+            <div className="addOptionDiv"><button className="addOption"  onClick={()=>addOption()}> ADD OPTION</button></div>
             {options.map(option => (
-              <div key={option.key}>{option.answerText} {option.isCorrect ?"true":"not"}</div>
+              <span key={option.key}>{option.answerText} {option.isCorrect ?"true":"not"}</span>
             ))}
             
             <div className='buttons'>

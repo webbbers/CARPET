@@ -125,7 +125,7 @@ const HomePage = () => {
                                         <p className="card__price-only">Only</p>
                                         <p className="card__price-value">$9.99</p>
                                     </div>
-                                    <a href="#popup" className="btn btn--white">Join now!</a>
+                                    <a href="/" className="btn btn--white">Join now!</a>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +185,7 @@ const HomePage = () => {
                                         <p className="card__price-only">Only</p>
                                         <p className="card__price-value">$99.99</p>
                                     </div>
-                                    <a href="#popup" className="btn btn--white">Apply now!</a>
+                                    <a href="/" className="btn btn--white">Apply now!</a>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@ const HomePage = () => {
                 </div>
 
                 <div className="u-center-text u-margin-top-huge">
-                    <a href="#" className="btn btn--green">Learn More</a>
+                    <a href="/" className="btn btn--green">Learn More</a>
                 </div>
 
             </section>

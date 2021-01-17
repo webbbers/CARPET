@@ -34,22 +34,20 @@ const TfQuestion = props => {
             });
     }
     return (
-        <div className="mcQuestion">
-            <div>{question.type}</div>
+        <div className="tfQuestion">
+            <div className="questionOrder">{props.order+1}</div>
             <div className="questionText">
-                <input type="text" name="name" placeholder="Question" onChange={(e)=>setText(e.target.value)}/>{text}
-                <input type="text" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
-
+                <input type="text"className="tfQuestionInput"  name="name" placeholder="Question" onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" className="tfPointInput"name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
+                <div className="tfCorrectness">correct &nbsp;<input type="checkbox" onChange={()=>setCorrectness(!correctness)}/></div>
             </div>
             
-            <div>
-                <div className="correctness">correct &nbsp;<input type="checkbox" onChange={()=>setCorrectness(!correctness)}/></div>
-            </div>
+            
            
             <div>{correctness?"true":"false"}</div>
             
             <div className='buttons'>
-                <button onClick={() =>props.deleteHandler(question.questionText)}>Delete</button>
+                <button onClick={() =>props.deleteHandler(question.id)}>Delete</button>
                 <button onClick={()=>saveHandler()}> SAVE </button>
             </div>
         </div>

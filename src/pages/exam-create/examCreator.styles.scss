@@ -3,8 +3,33 @@
     padding: 10px;
     width: 65%;
     margin: 0 auto;
-    font-size:2.5rem;
+    margin-top: 20px;
+    font-size:1.5rem;
 
+
+    .examCreateHeader{
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+
+        .examNameInput{
+            width: 76%;
+            padding: 12px 20px;
+            margin: 8px 5px;
+            // margin-left: 50px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .examPointInput{
+            display: inline-block;
+            width: 5%;
+            padding: 11px 20px;
+            border-radius: 4px;
+            margin: 0px 5px;
+        }
+    }
     .question{
         width: 100%;
         margin-top: 30px;
@@ -14,17 +39,23 @@
 
     .addQuestion{
         padding: 10px;
-        
-        margin: 0 auto;
-        background-color: rgb(16, 192, 16);
-        color: white;
+        margin: 10px;
         
         text-align: center;
-        // font-size: 2.5rem;
-
-        &:hover{
-            background-color: rgb(16, 122, 16);
+        
+        .addMcQuestion,.addTfQuestion{
+            display: inline-block;
+            color: white;
+            background-color: rgb(16, 192, 16);
+            width: 40%;
+            margin:10px;
+            padding: 10px;
+            &:hover{
+                background-color: rgb(16, 122, 16);
+            }
         }
+
+        
     }
     .examButtons{
         padding: 10px;
