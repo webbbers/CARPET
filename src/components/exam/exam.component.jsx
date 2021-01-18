@@ -37,6 +37,22 @@ const Exam = (props) => {
         //     isCorrect:false
         // }
     ])
+    
+    const shuffleSingleQuestionsOptions = (question) =>{
+        question.answerOptions.sort( () => Math.random() - 0.5);
+        return question
+    }
+    const shuffleQuestionsOptions = (arr) =>{
+        let temp = [...arr]
+        let result =temp.map(question => {
+            if(question.type === "MultipleChoice"){
+                return shuffleSingleQuestionsOptions(question)
+            } else {
+                return question
+            }
+        })
+        return result
+    }
     const shuffleExam = (arr) => {
         let temp = [...arr]
         temp.sort( () => Math.random() - 0.5);
@@ -49,7 +65,8 @@ const Exam = (props) => {
             let example=db.collection("Exams").doc(examId).get()
             let exam= (await example).data()
             console.log(exam)
-            let shuffledQuestions = await  shuffleExam(exam.questions)
+            let questionsWithShuffledOptions = await shuffleQuestionsOptions(exam.questions)
+            let shuffledQuestions = await  shuffleExam(questionsWithShuffledOptions)
             setQuestions(shuffledQuestions)
             setMaxScore(exam.points)
             setExamName(exam.examName)
