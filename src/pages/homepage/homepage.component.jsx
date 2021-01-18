@@ -123,7 +123,7 @@ const HomePage = () => {
                                 <div className="card__cta">
                                     <div className="card__price-box">
                                         <p className="card__price-only">Only</p>
-                                        <p className="card__price-value">$9.99</p>
+                                        <p className="card__price-value">Free Plan</p>
                                     </div>
                                     <a href="/" className="btn btn--white">Join now!</a>
                                 </div>
@@ -183,7 +183,7 @@ const HomePage = () => {
                                 <div className="card__cta">
                                     <div className="card__price-box">
                                         <p className="card__price-only">Only</p>
-                                        <p className="card__price-value">$99.99</p>
+                                        <p className="card__price-value">$999.99</p>
                                     </div>
                                     <a href="/" className="btn btn--white">Apply now!</a>
                                 </div>

@@ -107,7 +107,8 @@ const Exam = (props) => {
             
                 <div className="examResults">
                     <h1>END OF EXAM</h1>
-                    <div> You have scored {score} out of {maxScore}</div>
+                    <div> You have scored <span className="score">{score}</span> out of {maxScore}</div>
+                    <div>Y</div>
                 </div>
             }
             

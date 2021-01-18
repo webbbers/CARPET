@@ -16,12 +16,19 @@
     }
 
     .examResults{
+        background-color: rgb(123, 253, 203);
         padding: 30px;
         display: block;
         margin: 0 auto;
-        border: 3px solid black;
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 0px 3px 5px 1px rgb(47, 47, 47);
         text-align: center;
-        font-size: 2em;
+        font-size: 2rem;
+        .score{
+            color:rgb(17, 14, 14);
+            font-size:xx-large;
+
+        }
     }
     .timer{
         display: flex;
