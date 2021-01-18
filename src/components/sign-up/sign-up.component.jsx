@@ -15,6 +15,10 @@ const SignUp = () => {
         password:'',
         confirmPassword:''
     })
+
+    const [isTeacher,setIsTeacher] = useState(false)
+
+
     const {displayName,email,password,confirmPassword} = values;
 
     const handleSubmit = async event=> {
@@ -29,7 +33,7 @@ const SignUp = () => {
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email,password)
 
-            await createUserProfileDocument(user,{displayName});
+            await createUserProfileDocument(user,{displayName,isTeacher});
 
             setValues({
                 displayName: '',
@@ -84,6 +88,13 @@ const SignUp = () => {
                   label='Confirm Password'
                   required
                   />
+                  <div className="pretty p-default p-round p-smooth p-bigger bizimki">
+                  <input type="checkbox" onClick={()=>setIsTeacher(!isTeacher)}/>
+                    <div className="state p-primary">
+                        <label>I am an Instructor</label>
+                    </div>
+                     
+                 </div>
                 <CustomButton type='submit'>SIGN UP</CustomButton>
                 
             </form>
