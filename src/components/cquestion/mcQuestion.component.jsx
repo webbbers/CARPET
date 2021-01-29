@@ -13,6 +13,7 @@ const McQuestion = props => {
         {answerText:"",isCorrect:false,key:0},
         {answerText:"",isCorrect:false,key:1},
     ])
+    const [optionCount,setOptionCount] = useState(2)
 
 
     // {
@@ -56,6 +57,8 @@ const McQuestion = props => {
                 answerOptions:options
             });
     }
+
+
     const updateState = ( text, key,value ) => {
         if(text){
             // console.log("i am in here key =",key,"  value=",value)
@@ -71,12 +74,14 @@ const McQuestion = props => {
         }
         saveHandler()
     }
+
     return (
         <div className="mcQuestion">
              <div className="questionOrder">Q{props.order+1}</div>
             <div className="questionText">
-                <input type="text" className="mcQuestionInput" name="name" placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
-                <input type="text" className="mcPointInput" name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/> {point}
+                <input type="text" className="mcQuestionInput"  placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text" className="mcPointInput"  placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/> {point}
+                <input type="text" className="mcPointInput" placeholder="2" onChange={(e)=>setOptionCount(Number(e.target.value))}/> {optionCount}
             </div>
             <div className="options">
                 {options.map(option => (

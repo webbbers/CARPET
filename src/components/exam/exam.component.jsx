@@ -38,26 +38,8 @@ const Exam = (props) => {
         // }
     ])
     
-    const shuffleSingleQuestionsOptions = (question) =>{
-        question.answerOptions.sort( () => Math.random() - 0.5);
-        return question
-    }
-    const shuffleQuestionsOptions = (arr) =>{
-        let temp = [...arr]
-        let result =temp.map(question => {
-            if(question.type === "MultipleChoice"){
-                return shuffleSingleQuestionsOptions(question)
-            } else {
-                return question
-            }
-        })
-        return result
-    }
-    const shuffleExam = (arr) => {
-        let temp = [...arr]
-        temp.sort( () => Math.random() - 0.5);
-        return temp
-    }
+
+
     const examId=props.location.pathname.slice(6);
     useEffect(  () =>{
         const fetchExam = async () =>{
@@ -65,8 +47,8 @@ const Exam = (props) => {
             let example=db.collection("Exams").doc(examId).get()
             let exam= (await example).data()
             console.log(exam)
-            let questionsWithShuffledOptions = await shuffleQuestionsOptions(exam.questions)
-            let shuffledQuestions = await  shuffleExam(questionsWithShuffledOptions)
+            let questionsWithShuffledOptions =  shuffleQuestionsOptions(exam.questions)
+            let shuffledQuestions =  shuffleExam(questionsWithShuffledOptions)
             setQuestions(shuffledQuestions)
             setMaxScore(exam.points)
             setExamName(exam.examName)
@@ -132,6 +114,39 @@ const Exam = (props) => {
         </div>
     )
     
+}
+
+export const shuffleExam = (arr) => {
+    let temp = [...arr]
+    temp.sort( () => Math.random() - 0.5);
+    return temp
+}
+export const shuffleSingleQuestionsOptions = (question) =>{
+    let correctOptions=question.answerOptions.filter(option =>{
+        return option.isCorrect === true
+    })
+    let falseOptions=question.answerOptions.filter(option =>{
+        return option.isCorrect === false
+    })
+    let tempArr =[correctOptions[0]]
+    for(let i=0;i<3;i++){
+        tempArr.push(falseOptions[i])
+    }
+    question.answerOptions = tempArr;
+    question.answerOptions.sort( () => Math.random() - 0.5);
+    return question;
+}
+
+export const shuffleQuestionsOptions = (arr) =>{
+    let temp = [...arr]
+    let result =temp.map(question => {
+        if(question.type === "MultipleChoice"){
+            return shuffleSingleQuestionsOptions(question)
+        } else {
+            return question
+        }
+    })
+    return result
 }
 
 export default Exam;
