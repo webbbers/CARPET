@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import lapimage from '../../assets/laptopimage.png';
-
 import { firestore } from '../../firebase/firebase.utils';
 
 import './homepage.styles.scss';
@@ -20,6 +19,7 @@ const HomePage = () => {
             });
         });
     })
+    
     return(
         <div className='homepage'>
             <div className="u-center-text u-margin-bottom-big">

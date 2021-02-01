@@ -1,4 +1,11 @@
 import {shuffleExam,shuffleSingleQuestionsOptions,shuffleQuestionsOptions} from './exam.component';
+const crypto = require('crypto');
+
+Object.defineProperty(global.self, 'crypto', {
+  value: {
+    getRandomValues: arr => crypto.randomBytes(arr.length)
+  }
+});
 
     const sampleQuestions = [  {
             key:0,
@@ -44,6 +51,6 @@ test('Shuffle Single Questions Options Test',() => {
 test('Shuffle Questions Options',()=>{
     let sortedShuffledQuestionsOptions = shuffleQuestionsOptions(sampleQuestions).sort(sortByKey)
     let sortedSampleQuestions =  sampleQuestions
-    sortedSampleQuestions = sortedSampleQuestions.sort(sortByKey)
+    // sortedSampleQuestions = sortedSampleQuestions.sort(sortByKey)
     expect(sortedShuffledQuestionsOptions).toEqual(sortedSampleQuestions);
 })

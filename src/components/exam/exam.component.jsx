@@ -115,10 +115,14 @@ const Exam = (props) => {
     )
     
 }
-
+export const randomize = () => {  
+    var arr = new Uint32Array(1);
+    crypto.getRandomValues(arr);
+    return arr[0] * Math.pow(2,-32) - 0.5;
+}
 export const shuffleExam = (arr) => {
     let temp = [...arr]
-    temp.sort( () => Math.random() - 0.5);
+    temp.sort( () => randomize());
     return temp
 }
 export const shuffleSingleQuestionsOptions = (question) =>{
@@ -133,7 +137,7 @@ export const shuffleSingleQuestionsOptions = (question) =>{
         tempArr.push(falseOptions[i])
     }
     question.answerOptions = tempArr;
-    question.answerOptions.sort( () => Math.random() - 0.5);
+    question.answerOptions.sort( () => randomize());
     return question;
 }
 
