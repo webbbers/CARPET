@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import { Switch,Route,Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
-import './App.css';
+// import './App.css';
 
 import { createStructuredSelector } from 'reselect';
 
@@ -10,7 +10,7 @@ import { createStructuredSelector } from 'reselect';
 // import { faCheckSquare, faCoffee, faMapMarkerAlt, faEnvelope, faPhone, faPrint,faStore, faHeadset, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import HomePage from './pages/homepage/homepage.component';
-import SignInAndSignUpPage from './pages/sign/sign.component';
+import SignInAndSignUpPage from './pages/sign/signPage.component';
 import ExamCreator from './pages/exam-create/examCreator.component';
 import Exam from './components/exam/exam.component';
 import MyExams from './components/myexams/myExams.component';
