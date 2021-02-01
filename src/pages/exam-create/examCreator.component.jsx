@@ -34,12 +34,12 @@ const ExamCreator= () => {
         }
     ])
     
-    const deleteHandler = id =>{
-        setQuestions(questions.filter(question => question.id !== id))
+    const deleteHandler = deleteId =>{
+        setQuestions(questions.filter(question => question.id !== deleteId))
     }
 
-    const editedHandler = (id,newContent) => {
-        setQuestions(questions.map(question => question.id === id ? newContent:question))
+    const editedHandler = (editId,newContent) => {
+        setQuestions(questions.map(question => question.id === editId ? newContent:question))
     }
 
     const addmcQuestionHandler = () => {
@@ -105,7 +105,7 @@ const ExamCreator= () => {
                         order={questions.indexOf(question)}
                         key={question.id}
                         question={question}
-                        editedHandler={(id,newContent)=>editedHandler(id,newContent)}
+                        editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
                         deleteHandler={(questionText) => deleteHandler(questionText)}
                     />
                     : 
@@ -113,7 +113,7 @@ const ExamCreator= () => {
                         order={questions.indexOf(question)}
                         key={question.id}
                         question={question}
-                        editedHandler={(id,newContent)=>editedHandler(id,newContent)}
+                        editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
                         deleteHandler={(questionText) => deleteHandler(questionText)}
                     />
                 

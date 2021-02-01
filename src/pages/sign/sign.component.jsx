@@ -3,10 +3,10 @@ import React from 'react';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign-up.component';
 
-import './sign-in-up.styles.scss' ;
+import './sign.styles.scss' ;
 
 
-const SignInAndSignUpPage = () => (
+const SignPage = () => (
     <div className='sign-in-up'>
         <div><SignIn/></div>
         <div><SignUp/></div>
@@ -15,4 +15,4 @@ const SignInAndSignUpPage = () => (
 
 )
 
-export default SignInAndSignUpPage;
+export default SignPage;

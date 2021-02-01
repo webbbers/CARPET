@@ -11,7 +11,6 @@ import Footer from '../../components/footer/footer.component';
 const HomePage = () => {
 
     // eslint-disable-next-line
-    var unsubscribeFromSnapshot=null;
     useEffect(()=>{
         firestore.collection("users").get().then(function(querySnapshot) {
             console.log("Users")

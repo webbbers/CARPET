@@ -59,8 +59,8 @@ const McQuestion = props => {
     }
 
 
-    const updateState = ( text, key,value ) => {
-        if(text){
+    const updateState = ( txt, key,value ) => {
+        if(txt){
             // console.log("i am in here key =",key,"  value=",value)
             let index=options.findIndex(obj => obj.key === key)
             let newOptions = [...options];

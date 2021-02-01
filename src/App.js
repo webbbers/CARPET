@@ -10,24 +10,22 @@ import { createStructuredSelector } from 'reselect';
 // import { faCheckSquare, faCoffee, faMapMarkerAlt, faEnvelope, faPhone, faPrint,faStore, faHeadset, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import HomePage from './pages/homepage/homepage.component';
-import SignInAndSignUpPage from './pages/sign-in-up/sign-in-up.component';
+import SignInAndSignUpPage from './pages/sign/sign.component';
 import ExamCreator from './pages/exam-create/examCreator.component';
 import Exam from './components/exam/exam.component';
 import MyExams from './components/myexams/myExams.component';
 import Header from './components/header/header.component';
 
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
+import { setCurrentUser as setCurrentUserRedux } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
 
 
 const App = props => {
-  // const {setCurrentUser} = props;
 
   var unsubscribeFromAuth=null;
   
   useEffect(()=> {
-    
     const {setCurrentUser} = props;
     // eslint-disable-next-line
     unsubscribeFromAuth= auth.onAuthStateChanged(async userAuth => {
@@ -69,7 +67,7 @@ const mapStateToProps = createStructuredSelector ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch( setCurrentUser(user))
+  setCurrentUser: user => dispatch( setCurrentUserRedux(user))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

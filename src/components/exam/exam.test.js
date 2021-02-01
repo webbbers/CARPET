@@ -33,11 +33,15 @@ const sortByKey = (a, b) => {           // comparison function used to help comp
 }
 
 test('Shuffle Exam Test',() => {
-    expect(shuffleExam(sampleQuestions).sort(sortByKey)).toEqual(sampleQuestions.sort(sortByKey));
+    let sortedShuffledQuestions = shuffleExam(sampleQuestions).sort(sortByKey)
+    let sortedSampleQuestions =  sampleQuestions.sort(sortByKey)
+    expect(sortedShuffledQuestions).toEqual(sortedSampleQuestions);
 })
 test('Shuffle Single Questions Options Test',() => {
     expect(shuffleSingleQuestionsOptions(sampleQuestion)).toEqual(sampleQuestion);
 })
 test('Shuffle Questions Options',()=>{
-    expect(shuffleQuestionsOptions(sampleQuestions).sort(sortByKey)).toEqual(sampleQuestions.sort(sortByKey));
+    let sortedShuffledQuestionsOptions = shuffleQuestionsOptions(sampleQuestions).sort(sortByKey)
+    let sortedSampleQuestions =  sampleQuestions.sort(sortByKey)
+    expect(sortedShuffledQuestionsOptions).toEqual(sortedSampleQuestions);
 })
