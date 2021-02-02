@@ -48,7 +48,7 @@ test('Shuffle Exam Test',() => {
 test('Shuffle Single Questions Options Test',() => {
     expect(shuffleSingleQuestionsOptions(sampleQuestion)).toEqual(sampleQuestion);
 })
-test('Shuffle Questions Options',()=>{
+test('Shuffle Questions Options',()=>{      // considered as an integration test since we call shuffleSingleQuestionsOptions in this
     let sortedShuffledQuestionsOptions = shuffleQuestionsOptions(sampleQuestions).sort(sortByKey)
     let sortedSampleQuestions =  sampleQuestions
     // sortedSampleQuestions = sortedSampleQuestions.sort(sortByKey)
