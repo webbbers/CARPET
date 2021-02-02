@@ -5,7 +5,11 @@ import './examCreator.styles.scss';
 import TfQuestion from '../../components/cquestion/tfQuestion.component';
 import McQuestion from '../../components/cquestion/mcQuestion.component';
 
-const ExamCreator= () => {
+import {connect} from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selector'
+
+const ExamCreator = (props) => {
 
     const [maxScore,setMaxScore] = useState(0)
     const [examName,setExamName] = useState('')
@@ -69,20 +73,16 @@ const ExamCreator= () => {
         setId(id+1)
     }
     const sendExam = () => {
+        let authorName = props.currentUser? props.currentUser.displayName: "Unknown"
+        let authorId = props.currentUser? props.currentUser.id : 0
         
         firestore.collection("Exams").add({
-            author:"Sarp",
+            author:authorName,
+            authorId:authorId,
             points:maxScore,
             examName:examName,
             questions:questions
         })
-        // console.log({
-        //         author:"Sarp",
-        //         points:point,
-        //         examName:examName,
-        //         questions:questions
-        //     })
-
     }
 
     return (
@@ -133,5 +133,7 @@ const ExamCreator= () => {
     )
     
 }
-
-export default ExamCreator;
+const mapStateToProps = createStructuredSelector ({
+    currentUser:selectCurrentUser
+})
+export default connect(mapStateToProps)(ExamCreator);

@@ -12,9 +12,15 @@ const userReducer = (state = INITIAL_STATE,{type,payload}={}) => {
                 ...state,
                 currentUser: payload
             }
+        case 1:
+            return
+        case 2:
+            return
         default:
             return state;
     }
 }
+
+export const dummy = () => 0
 
 export default userReducer;
