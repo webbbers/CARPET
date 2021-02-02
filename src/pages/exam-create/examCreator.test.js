@@ -1,12 +1,11 @@
-import { render, fireEvent, getByPlaceholderText, getByDisplayValue} from '@testing-library/react';
+import { render, fireEvent} from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-
 import ExamCreator from './examCreator.component';
 
 // SIMULATING USER INTERACTION
 
 test('Exam Name input works correctly', () => {
-    const { getByText, getByDisplayValue,getByPlaceholderText } =render(<BrowserRouter><ExamCreator /></BrowserRouter>);
+    const {  getByDisplayValue,getByPlaceholderText } =render(<BrowserRouter><ExamCreator /></BrowserRouter>);
    
     const examNameInput = getByPlaceholderText("Exam Name")
 
@@ -25,7 +24,7 @@ test('Adds MultipleChoice Question to ExamCreator', () => {
 
 });
 test('Adds True False Question to ExamCreator', () => {
-    const { getByText, getByLabelText } =render(<BrowserRouter><ExamCreator /></BrowserRouter>);
+    const { getByText } =render(<BrowserRouter><ExamCreator /></BrowserRouter>);
     const addTfQuestion = getByText("+ Add True-False")
 
     fireEvent.click(addTfQuestion)

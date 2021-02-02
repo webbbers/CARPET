@@ -1,10 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import firebase from '../../firebase/firebase.utils';
 import Question from '../question/question.component';
-import TQuestion from '../question/tQuestion.component';
+
 import Spinner from '../UI/Spinner/spinner.component';
 import './exam.styles.scss';
 
+import {connect} from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selector'
 
 
 const Exam = (props) => {
@@ -75,10 +78,12 @@ const Exam = (props) => {
         }
         if(currentQuestion+1 === questions.length){
             let db =firebase.firestore();
+            let entrantId = props.currentUser? props.currentUser.id : 0
             db.collection("examResults").add({
                 examId:examId,
                 examName:examName,
-                score:score
+                score:score,
+                entrantId:entrantId
             })
             setSeconds(0)
             console.log("end of exam")
@@ -97,12 +102,9 @@ const Exam = (props) => {
             {fetching ? <Spinner/>
             :
             questions.length > currentQuestion ? 
+                <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} key={questions[currentQuestion].id}/>
                 
-                questions[currentQuestion].type === "MultipleChoice"?
-                    <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} key={questions[currentQuestion].id}/>
                 :
-                    <TQuestion question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} key={questions[currentQuestion].id}/>
-                : 
             
                 <div className="examResults">
                     <h1>END OF EXAM</h1>
@@ -153,4 +155,7 @@ export const shuffleQuestionsOptions = (arr) =>{
     return result
 }
 
-export default Exam;
+const mapStateToProps = createStructuredSelector ({
+    currentUser:selectCurrentUser
+})
+export default connect(mapStateToProps)(Exam);

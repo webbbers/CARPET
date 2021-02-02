@@ -5,7 +5,7 @@ import './question.styles.scss'
 const Question = props => {
 
     const { question,questionNumber,approve } = props;
-    const [correct,setCorrect] = useState(0)  // 1 for false 2 for true
+    const [correct,setCorrect] = useState(false)  
     
     const optionClickedHandler = status => {
         if (status) {
@@ -33,7 +33,9 @@ const Question = props => {
             </div>
 			{question.imageURL ? <div><img id="qphoto" alt="questImage" className="img" src={question.imageURL}/></div> : null}
             <div className="questionText"> {question.questionText} </div>
+            
             <div className="answers">
+            {question.type === "MultipleChoice" ?
                 <form>
                     {question.answerOptions.map( answerOption => (
                         <div className="answersOptionlist" key={answerOption.answerText}>
@@ -42,7 +44,19 @@ const Question = props => {
                         </div>
                     ))}
                 </form>
+                :
+                <form>
+                    <div>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(true)}/>
+                        <label className="answerOption">True</label>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(false)}/>
+                        <label className="answerOption">False</label>
+                    </div>
+                </form>
+            }
             </div>
+            
+            
 	
            <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
         </div>
