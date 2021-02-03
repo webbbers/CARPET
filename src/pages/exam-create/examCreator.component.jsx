@@ -14,6 +14,7 @@ const ExamCreator = (props) => {
     const [maxScore,setMaxScore] = useState(0)
     const [examName,setExamName] = useState('')
     const [id,setId] = useState(2)
+    const [examId,setExamId] = useState('')
     const [questions,setQuestions] = useState([
         {
             id:0,
@@ -82,53 +83,68 @@ const ExamCreator = (props) => {
             points:maxScore,
             examName:examName,
             questions:questions
-        })
+        }).then( docRef =>{
+            setExamId(docRef.id);
+        }).catch(error => {
+            console.error("Error adding document: ", error);
+        });
     }
 
     return (
         <div className='examCreatorPage'>
-            <div className="u-center-text u-margin-bottom-big">
-                <h2 className="heading-primary">
-                    <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
-                </h2>
-            </div>
-            <div className="examCreateHeader">
-                <input type="text" className="examNameInput" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
-                <input type="text" className="examPointInput" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
-            </div>
-            <div>{examName} &nbsp; &nbsp; {maxScore}</div>
-            
-            {questions.map(question => (
-                <div key={question.id}>
-                    {question.type === "MultipleChoice" ?
-                    <McQuestion 
-                        order={questions.indexOf(question)}
-                        key={question.id}
-                        question={question}
-                        editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
-                        deleteHandler={(questionText) => deleteHandler(questionText)}
-                    />
-                    : 
-                    <TfQuestion
-                        order={questions.indexOf(question)}
-                        key={question.id}
-                        question={question}
-                        editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
-                        deleteHandler={(questionText) => deleteHandler(questionText)}
-                    />
-                
-                }
-               </div>
-            ))}
-            <div className="addQuestion">
-                <div className="addTfQuestion" onClick={() => addmcQuestionHandler()}> + Add MultipleChoice</div> 
-                <div className="addMcQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
-            </div>
-            <div className="examButtons">
-                <button className="btn btn-green" > New Exam</button>
-                <button className="btn btn-green" onClick={()=>sendExam()}> Save the Exam</button>
-            </div>
+            {examId ? 
+            <div className="createdExamInfo">
+                <div>Your exam is created successfully.</div>
 
+                <div>Exam ID is {examId}</div>
+                <div> You can share the link http://localhost:3000/exam/ {examId} </div>
+            </div> 
+            
+            :
+            <div>
+                <div className="u-center-text u-margin-bottom-big">
+                    <h2 className="heading-primary">
+                        <span className="heading-primary--sub u-margin-top-big">Create Your Own Exam </span>
+                    </h2>
+                </div>
+                <div className="examCreateHeader">
+                    <input type="text" className="examNameInput" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
+                    <input type="text" className="examPointInput" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
+                </div>
+                <div>{examName} &nbsp; &nbsp; {maxScore}</div>
+                
+                {questions.map(question => (
+                    <div key={question.id}>
+                        {question.type === "MultipleChoice" ?
+                        <McQuestion 
+                            order={questions.indexOf(question)}
+                            key={question.id}
+                            question={question}
+                            editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
+                            deleteHandler={(questionText) => deleteHandler(questionText)}
+                        />
+                        : 
+                        <TfQuestion
+                            order={questions.indexOf(question)}
+                            key={question.id}
+                            question={question}
+                            editedHandler={(editId,newContent)=>editedHandler(editId,newContent)}
+                            deleteHandler={(questionText) => deleteHandler(questionText)}
+                        />
+                    
+                    }
+                </div>
+                ))}
+                <div className="addQuestion">
+                    <div className="addTfQuestion" onClick={() => addmcQuestionHandler()}> + Add MultipleChoice</div> 
+                    <div className="addMcQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
+                </div>
+                <div className="examButtons">
+                    <button className="btn btn-green" > New Exam</button>
+                    <button className="btn btn-green" onClick={()=>sendExam()}> Save the Exam</button>
+                </div>
+            </div>
+            }
         </div>
     )
     

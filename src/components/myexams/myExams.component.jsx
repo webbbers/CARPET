@@ -40,7 +40,13 @@ const MyExams = ({currentUser}) => {
         <div className="myExams">
             {fetching ? <div><Spinner/></div> :
              exams.map(exam => (
-                <div key={exam.examName}> {exam.examName}</div>
+               
+                <div key={exam.examName}>
+                    {exam.examName} 
+                    <button>View</button>
+                    <button>Results</button>
+                </div>
+               
             ))} 
         </div>
     )
