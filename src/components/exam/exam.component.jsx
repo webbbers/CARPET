@@ -18,6 +18,7 @@ const Exam = (props) => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [score,setScore] = useState(0)
     const [maxScore,setMaxScore] = useState(100)
+    const [wrongAnswers,setWrongAnswers] = useState([])
     const [questions,setQuestions] = useState([
         // {
         //     type:"MultipleChoice",
@@ -71,10 +72,20 @@ const Exam = (props) => {
 
     
 
-    const approve = (correct,point) => {
-        setCurrentQuestion(currentQuestion+1)
+    const approve = (correct,point,ansText) => {
+        // setCurrentQuestion(currentQuestion+1)
         if (correct) {
             setScore(score+point)
+        } else{
+            // console.log("This question is wrong",questions[currentQuestion])
+            let wrongAnswerData={}
+            if(questions[currentQuestion].type === 'MultipleChoice'){
+                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:ansText}
+            } else {
+                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:false}
+            }
+            // console.log("wrongLog",wrongAnswerData)
+            setWrongAnswers([...wrongAnswers,wrongAnswerData])
         }
         if(currentQuestion+1 === questions.length){
             let db =firebase.firestore();
@@ -83,11 +94,13 @@ const Exam = (props) => {
                 examId:examId,
                 examName:examName,
                 score:score,
-                entrantId:entrantId
+                entrantId:entrantId,
+                wrongAnswers:wrongAnswers
             })
             setSeconds(0)
             console.log("end of exam")
         }
+        setCurrentQuestion(currentQuestion+1)
     }
     return (
         <div className='exampage'>
@@ -102,7 +115,7 @@ const Exam = (props) => {
             {fetching ? <Spinner/>
             :
             questions.length > currentQuestion ? 
-                <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point)=>approve(correct,point)} key={questions[currentQuestion].id}/>
+                <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point,answerText)=>approve(correct,point,answerText)} key={questions[currentQuestion].id}/>
                 
                 :
             

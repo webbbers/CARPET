@@ -33,11 +33,17 @@ const TfQuestion = props => {
                 isCorrect:correctness
             });
     }
+    const updateState = (txt) => {
+
+        setText(txt)
+        saveHandler()
+
+    }
     return (
         <div className="tfQuestion">
             <div className="questionOrder">Q{props.order+1}</div>
             <div className="questionText">
-                <input type="text"className="tfQuestionInput"  name="name" placeholder="Question" onChange={(e)=>setText(e.target.value)}/>{text}
+                <input type="text"className="tfQuestionInput"  name="name" placeholder="Question" onChange={(e)=>updateState(e.target.value)}/>{text}
                 <input type="text" className="tfPointInput"name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
                 <div className="tfCorrectness">correct &nbsp;<input type="checkbox" onChange={()=>setCorrectness(!correctness)}/></div>
             </div>

@@ -41,4 +41,14 @@ describe("Adding Questions to ExamCreator",()=>{
     });
 })
 
+// test('Exam Id input works correctly', () => {
+
+//     let store = mockStore({user:{id:323232,displayName:"talha"},examId:15});
+//     const {  getByText,getByPlaceholderText } =render(<BrowserRouter> <Provider store={store}><ExamCreator /></Provider></BrowserRouter>);
+//     const saveExamButton = getByText("Save the Exam")
+//     fireEvent.click(saveExamButton)
+//     getByText("Your exam is created successfully.")
+   
+// });
+
 

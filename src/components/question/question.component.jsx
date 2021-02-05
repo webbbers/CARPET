@@ -6,13 +6,14 @@ const Question = props => {
 
     const { question,questionNumber,approve } = props;
     const [correct,setCorrect] = useState(false)  
-    
-    const optionClickedHandler = status => {
+    const [answerText,setAnswerText] = useState('')
+    const optionClickedHandler = (status,text='') => {
         if (status) {
             setCorrect(true)
         } else {
             setCorrect(false)
         }
+        setAnswerText(text)
     }
     // example Question : 
         // type:"MultipleChoice",
@@ -39,7 +40,7 @@ const Question = props => {
                 <form>
                     {question.answerOptions.map( answerOption => (
                         <div className="answersOptionlist" key={answerOption.answerText}>
-                            <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect)}/>
+                            <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect,answerOption.answerText)}/>
                             <label className="answerOption">{answerOption.answerText}</label>
                         </div>
                     ))}
@@ -58,7 +59,7 @@ const Question = props => {
             
             
 	
-           <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points)}> APPROVE </button></div>
+           <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points,answerText)}> APPROVE </button></div>
         </div>
     )
 }

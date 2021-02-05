@@ -34,7 +34,7 @@ const ExamCreator = (props) => {
             type:"TrueFalse",
             points:10,
             imageURL: "",
-            questionText:"Intial Trial True-False ?",
+            questionText:"True-False Question",
             isCorrect:false          
         }
     ])
@@ -95,7 +95,6 @@ const ExamCreator = (props) => {
             {examId ? 
             <div className="createdExamInfo">
                 <div>Your exam is created successfully.</div>
-
                 <div>Exam ID is {examId}</div>
                 <div> You can share the link http://localhost:3000/exam/ {examId} </div>
             </div> 
@@ -141,7 +140,7 @@ const ExamCreator = (props) => {
                 </div>
                 <div className="examButtons">
                     <button className="btn btn-green" > New Exam</button>
-                    <button className="btn btn-green" onClick={()=>sendExam()}> Save the Exam</button>
+                    <button className="btn btn-green" onClick={()=>sendExam()}>Save the Exam</button>
                 </div>
             </div>
             }
