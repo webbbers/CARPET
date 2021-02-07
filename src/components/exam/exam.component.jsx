@@ -17,6 +17,7 @@ const Exam = (props) => {
     const [examName,setExamName] = useState('')
     const [authorId,setAuthorId] = useState(0)
     const [currentQuestion,setCurrentQuestion] = useState(0)
+    const [examEnded,setExamEnded] = useState(false)
     const [score,setScore] = useState(0)
     const [maxScore,setMaxScore] = useState(100)
     const [wrongAnswers,setWrongAnswers] = useState([])
@@ -67,29 +68,13 @@ const Exam = (props) => {
         if(seconds>0){
             let timer =setTimeout(() => setSeconds(seconds-1),1000);
             return () => clearTimeout(timer);
-        } else {
-            alert("time is up")
         }
     },[seconds])
 
     
-
-    const approve = (correct,point,ansText) => {
-        // setCurrentQuestion(currentQuestion+1)
-        if (correct) {
-            setScore(score+point)
-        } else{
-            // console.log("This question is wrong",questions[currentQuestion])
-            let wrongAnswerData={}
-            if(questions[currentQuestion].type === 'MultipleChoice'){
-                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:ansText}
-            } else {
-                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:false}
-            }
-            // console.log("wrongLog",wrongAnswerData)
-            setWrongAnswers([...wrongAnswers,wrongAnswerData])
-        }
-        if(currentQuestion+1 === questions.length){
+    
+    useEffect(()=>{
+        if (examEnded){
             let db =firebase.firestore();
             let entrantId = props.currentUser? props.currentUser.id : 0
             let entrantName = props.currentUser? props.currentUser.displayName: 'Unknown Person'
@@ -103,7 +88,29 @@ const Exam = (props) => {
                 wrongAnswers:wrongAnswers
             })
             setSeconds(0)
-            console.log("end of exam",score)
+        }
+        //eslint-disable-next-line
+    },[examEnded])
+    
+    const approve = (correct,point,ansText) => {
+        console.log("question that is answered = ",currentQuestion)
+        if (correct) {
+            console.log("score before=",score," point=",point)
+            setScore(score+point)
+
+        } else{
+            let wrongAnswerData={}
+            if(questions[currentQuestion].type === 'MultipleChoice'){
+                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:ansText}
+            } else {
+                wrongAnswerData={questionId:questions[currentQuestion].id,selectedOption:false}
+            }
+            // console.log("wrongLog",wrongAnswerData)
+            setWrongAnswers([...wrongAnswers,wrongAnswerData])
+        }
+        if(currentQuestion+1 === questions.length){
+            setExamEnded(true)
+            console.log("setExamEnded , score = ",score)
         }
         setCurrentQuestion(currentQuestion+1)
     }
