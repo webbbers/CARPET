@@ -4,6 +4,7 @@ import './myExams.styles.scss';
 
 import Spinner from '../UI/Spinner/spinner.component';
 import { firestore } from '../../firebase/firebase.utils';
+import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -23,10 +24,13 @@ const MyExams = ({currentUser}) => {
                 .onSnapshot( (querySnapshot) => {
                     let temp=[]
                    querySnapshot.forEach( (doc) => {
-                        temp.push(doc.data())
-                        console.log(doc.data())
+                       let temporary = doc.data()
+                       temporary['id']=doc.id
+                       temp.push(temporary)
+                    //    console.log("this is temporary",temporary)
+                        
                    })
-                   console.log("this is temp",temp)
+                //    console.log("this is exams",temp)
                    setExams(temp)
                    setFetching(false)
                 })
@@ -41,10 +45,10 @@ const MyExams = ({currentUser}) => {
             {fetching ? <div><Spinner/></div> :
              exams.map(exam => (
                
-                <div key={exam.examName}>
+                <div key={exam.examName} className='myExam'>
                     {exam.examName} 
                     <button>View</button>
-                    <button>Results</button>
+                    <Link to={`/examresult/${exam.id}`}>Results</Link>
                 </div>
                
             ))} 

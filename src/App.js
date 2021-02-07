@@ -13,6 +13,7 @@ import HomePage from './pages/homepage/homepage.component';
 import SignInAndSignUpPage from './pages/sign/signPage.component';
 import ExamCreator from './pages/exam-create/examCreator.component';
 import Exam from './components/exam/exam.component';
+import ExamResult from './components/exam-results/exam-results.component';
 import MyExams from './components/myexams/myExams.component';
 import Header from './components/header/header.component';
 
@@ -58,6 +59,7 @@ const App = props => {
         <Route exact path ='/examcreator' component={ExamCreator}/>
         <Route exact path ='/myExams' component={MyExams}/>
         <Route path ='/exam/' component={Exam}/>
+        <Route path ='/examresult/' component={ExamResult}/>
       </Switch>
     </div>
   );

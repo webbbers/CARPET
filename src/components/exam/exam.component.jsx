@@ -15,6 +15,7 @@ const Exam = (props) => {
     const [fetching,setFetching] = useState(true)
     const [seconds,setSeconds] = useState(100)
     const [examName,setExamName] = useState('')
+    const [authorId,setAuthorId] = useState(0)
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [score,setScore] = useState(0)
     const [maxScore,setMaxScore] = useState(100)
@@ -56,6 +57,7 @@ const Exam = (props) => {
             setQuestions(shuffledQuestions)
             setMaxScore(exam.points)
             setExamName(exam.examName)
+            setAuthorId(exam.authorId)
             setFetching(false)
         }
         fetchExam()
@@ -90,15 +92,18 @@ const Exam = (props) => {
         if(currentQuestion+1 === questions.length){
             let db =firebase.firestore();
             let entrantId = props.currentUser? props.currentUser.id : 0
+            let entrantName = props.currentUser? props.currentUser.displayName: 'Unknown Person'
             db.collection("examResults").add({
                 examId:examId,
+                authorId:authorId,
                 examName:examName,
-                score:score,
+                score:score/maxScore,
                 entrantId:entrantId,
+                entrantName:entrantName,
                 wrongAnswers:wrongAnswers
             })
             setSeconds(0)
-            console.log("end of exam")
+            console.log("end of exam",score)
         }
         setCurrentQuestion(currentQuestion+1)
     }

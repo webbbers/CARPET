@@ -1,0 +1,28 @@
+.examResultsPage{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 4rem;
+    .examResult{
+        text-align: center;
+        display: inline-block;
+        font-size: 2rem;
+        padding: 2rem;
+        border: 2px solid black;
+        margin: 1rem;
+
+        .entrantName{
+            display: inline-block;
+            padding: 1rem;
+        }
+        .entrantScore{
+            display: inline-block;
+            padding:1rem;
+        }
+    }
+
+    .noResultInfo{
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 50px;
+    }
+}

@@ -9,3 +9,4 @@ test('Checks some text in HomePage', () => {
     getByText("Carpet")
     getByText("Make Your Exam in Less Than 5 Minutes")
   });
+

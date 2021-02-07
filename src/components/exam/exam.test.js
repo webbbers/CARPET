@@ -36,7 +36,6 @@ const sortByKey = (a, b) => {           // comparison function used to help comp
     if(a.key < b.key) return -1; 
     else if(a.key > b.key) return 1; 
     else return 0; 
-
 }
 
 test('Shuffle Exam Test',() => {
@@ -45,9 +44,11 @@ test('Shuffle Exam Test',() => {
     sortedSampleQuestions = sortedSampleQuestions.sort(sortByKey)
     expect(sortedShuffledQuestions).toEqual(sortedSampleQuestions);
 })
+
 test('Shuffle Single Questions Options Test',() => {
     expect(shuffleSingleQuestionsOptions(sampleQuestion)).toEqual(sampleQuestion);
 })
+
 test('Shuffle Questions Options',()=>{      // considered as an integration test since we call shuffleSingleQuestionsOptions in this
     let sortedShuffledQuestionsOptions = shuffleQuestionsOptions(sampleQuestions).sort(sortByKey)
     let sortedSampleQuestions =  sampleQuestions

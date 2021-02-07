@@ -41,7 +41,7 @@ describe("Adding Questions to ExamCreator",()=>{
     });
 })
 
-// test('Exam Id input works correctly', () => {
+// test('Exam Created correctly', () => {
 
 //     let store = mockStore({user:{id:323232,displayName:"talha"},examId:15});
 //     const {  getByText,getByPlaceholderText } =render(<BrowserRouter> <Provider store={store}><ExamCreator /></Provider></BrowserRouter>);
