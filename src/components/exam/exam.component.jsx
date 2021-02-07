@@ -82,7 +82,7 @@ const Exam = (props) => {
                 examId:examId,
                 authorId:authorId,
                 examName:examName,
-                score:score/maxScore,
+                score:(score/maxScore)*100,
                 entrantId:entrantId,
                 entrantName:entrantName,
                 wrongAnswers:wrongAnswers

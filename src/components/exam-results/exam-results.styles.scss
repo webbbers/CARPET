@@ -1,8 +1,10 @@
-.examResultsPage{
+.examResultsPage {
+    white-space: pre-line;
     width: 60%;
     margin: 0 auto;
     margin-top: 4rem;
-    .examResult{
+
+    .examResult {
         text-align: center;
         display: inline-block;
         font-size: 2rem;
@@ -10,17 +12,18 @@
         border: 2px solid black;
         margin: 1rem;
 
-        .entrantName{
+        .entrantName {
             display: inline-block;
             padding: 1rem;
         }
-        .entrantScore{
+
+        .entrantScore {
             display: inline-block;
-            padding:1rem;
+            padding: 1rem;
         }
     }
 
-    .noResultInfo{
+    .noResultInfo {
         text-align: center;
         font-size: 3rem;
         margin-top: 50px;

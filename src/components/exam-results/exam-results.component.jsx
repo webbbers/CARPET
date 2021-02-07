@@ -16,6 +16,32 @@ const ExamResults = (props) => {
    
     const examId=props.location.pathname.slice(12); 
 
+	const compare_exams = (exam_f,exam_s) =>
+	{
+		var matching=0;
+		for (var i=0; i < exam_f.wrongAnswers.length; i++)
+			for (var v=0; v < exam_s.wrongAnswers.length; v++)
+				if (exam_f.wrongAnswers[i].questionId == exam_s.wrongAnswers[v].questionId
+				 && exam_f.wrongAnswers[i].selectedOption == exam_s.wrongAnswers[v].selectedOption) matching++;
+
+		var percentage = (matching / Math.min(exam_f.wrongAnswers.length, exam_s.wrongAnswers.length)) *100
+		console.log(percentage);
+		if (percentage > 49 && matching > 2) return percentage;
+		else return 0;
+	}
+
+	const check_similarity = () =>
+	{
+		if (results.length < 2) return "";
+		var cheaters="";
+		for (var i=0; i < results.length; i++)
+			for (var v=i+1; v < results.length; v++)
+				if (compare_exams(results[i],results[v]))
+					cheaters += results[i].entrantName + ", " + results[v].entrantName + " percentage: " + compare_exams(results[i],results[v]) + "% \n";
+
+		return cheaters;
+	}
+
     useEffect( () =>{
         if(props.currentUser){
             setFetching(true)
@@ -39,6 +65,8 @@ const ExamResults = (props) => {
     return (
         <div className="examResultsPage">
             <div className='row'>
+			<button onClick = {() => document.getElementById("cheater field").innerHTML = check_similarity()}> fetch cheaters </button>
+			<h1 id="cheater field">  </h1>
            {fetching ? <div><Spinner/></div> :
              results.map(result => (
                
