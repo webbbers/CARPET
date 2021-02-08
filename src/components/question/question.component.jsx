@@ -59,7 +59,7 @@ const Question = props => {
             
             
 	
-           <div className="approve"> <button className="btn btn--green" onClick={()=>approve(correct,question.points,answerText)}> APPROVE </button></div>
+           <div className="approve"> <button className="btn  approveButton" onClick={()=>approve(correct,question.points,answerText)}> APPROVE </button></div>
         </div>
     )
 }

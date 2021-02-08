@@ -52,9 +52,10 @@ const TfQuestion = props => {
            
             <div>{correctness?"true":"false"}</div>
             
-            <div className='buttons'>
-                <button onClick={() =>props.deleteHandler(question.id)}>Delete</button>
-                <button onClick={()=>saveHandler()}> SAVE </button>
+            
+            <div className='questionButtons'>
+                <button className="questionAdd" onClick={()=>saveHandler()}> Save</button>
+                <button className="questionDelete" onClick={() =>props.deleteHandler(question.id)}>Delete</button>
             </div>
         </div>
     )

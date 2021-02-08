@@ -8,7 +8,19 @@
     background-color: rgb(241, 244, 247);
 
     .myExam{
-        border: 3px solid black;
+        border: 3px solid #2c344c;
         margin: 10px;
+        display: inline-block;
+
+        &:hover{
+            transform: scale(1.1);
+            transition: 0.3s ease;
+        }
+
+        padding: 2rem;
+        .resultLink{
+            text-decoration: none;
+        }
+        
     }
 }

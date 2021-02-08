@@ -88,7 +88,7 @@ const McQuestion = props => {
                     <div className="option" key={option.key}>
                         <div><input type="text" className="optionInput" placeholder="Option" onChange={(e)=>updateState(true,option.key,e.target.value)}/></div>
                         <div className="correctness">correct &nbsp;<input type="checkbox" onChange={()=>updateState(false,option.key,false)}/></div>
-                        <button className="mcOptionDeleteButton" onClick={()=>deleteOptionHandler(option.key)}>DELETE</button>
+                        <button className="mcOptionDeleteButton" onClick={()=>deleteOptionHandler(option.key)}>Delete</button>
                      </div>
                 ))}
             </div>
@@ -97,10 +97,10 @@ const McQuestion = props => {
               <span key={option.key}>{option.answerText} {option.isCorrect ?"true":"not"}</span>
             ))}
             
-            <div className='buttons'>
-                <button>Shuffle</button>
-                <button onClick={() =>props.deleteHandler(question.id)}>Delete</button>
-                <button onClick={()=>saveHandler()}> SAVE </button>
+            <div className='questionButtons'>
+                {/* <button >Shuffle</button> */}
+                <buttson className="questionAdd" onClick={()=>saveHandler()}> Save </buttson>
+                <button className="questionDelete" onClick={() =>props.deleteHandler(question.id)}>Delete </button>
             </div>
         </div>
     )

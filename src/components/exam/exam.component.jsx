@@ -116,7 +116,7 @@ const Exam = (props) => {
     }
     return (
         <div className='exampage'>
-            <header className="Header">
+            <header className="examHeader">
             <div>{props.location.pathname.slice(6)}</div>
             <div className="timer">
                 <div className="timer_text">Time Left</div>
@@ -134,7 +134,6 @@ const Exam = (props) => {
                 <div className="examResults">
                     <h1>END OF EXAM</h1>
                     <div> You have scored <span className="score">{score}</span> out of {maxScore}</div>
-                    <div>Y</div>
                 </div>
             }
             

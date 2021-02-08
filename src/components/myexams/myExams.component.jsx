@@ -41,14 +41,12 @@ const MyExams = ({currentUser}) => {
 
 
     return (
-        <div className="myExams">
+        <div className="myExams row">
             {fetching ? <div><Spinner/></div> :
              exams.map(exam => (
                
-                <div key={exam.examName} className='myExam'>
-                    {exam.examName} 
-                    <button>View</button>
-                    <Link to={`/examresult/${exam.id}`}>Results</Link>
+                <div key={exam.examName} className='myExam col-1-of-3'>
+                    <div className="examResultLink"><Link className="resultLink" to={`/examresult/${exam.id}`}>{exam.examName}</Link></div>
                 </div>
                
             ))} 

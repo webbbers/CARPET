@@ -20,7 +20,7 @@ const HomePage = () => {
     
     return(
         <div className='homepage'>
-            <div className="u-center-text u-margin-bottom-big">
+            <div className="u-center-text u-margin-bottom-big carpetHeading">
                 <h2 className="heading-primary">
                     <span className="heading-primary--main">Carpet</span>
                     <span className="heading-primary--sub">is your way to go </span>
@@ -34,13 +34,13 @@ const HomePage = () => {
                 </div>
                 <div className="row">
                     <div className="col-1-of-2">
-                        <h3 className="heading-tertiary u-margin-bottom-small">You're going to fall in love with nature</h3>
+                        <h3 className="heading-tertiary u-margin-bottom-small">Make your examinations in CARPET</h3>
                         <p className="paragraph">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio voluptatibus nihil rem tempora iusto, illo iure aut, nemo ab.
+                        Create, send and analyze your exams, quizzes and assessments with CARPET. Carpet provides a secure environment for both students and teaching staff via shuffled exams and options in a random order.
                         </p>
-                        <h3 className="heading-tertiary u-margin-bottom-small">Live adventures like you never have before</h3>
+                        <h3 className="heading-tertiary u-margin-bottom-small">Display Statistics of Self or Institution</h3>
                         <p className="paragraph">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio voluptatibus nihil rem tempora iusto, illo iure aut, nemo ab.
+                            CARPET provides detailed results for students , class exam results with anti-cheat checking system for teachers and detailed analysis for institutions who wants to see their progress and success.
                         </p>
                         <Link to="signin"><button className="btn btn--green">Next Step &rarr;</button></Link>
                     </div>

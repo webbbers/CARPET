@@ -96,7 +96,7 @@ const ExamCreator = (props) => {
             <div className="createdExamInfo">
                 <div>Your exam is created successfully.</div>
                 <div>Exam ID is {examId}</div>
-                <div> You can share the link http://localhost:3000/exam/ {examId} </div>
+                <div> You can share the link http://localhost:3000/exam/{examId} </div>
             </div> 
             
             :
@@ -135,12 +135,12 @@ const ExamCreator = (props) => {
                 </div>
                 ))}
                 <div className="addQuestion">
-                    <div className="addTfQuestion" onClick={() => addmcQuestionHandler()}> + Add MultipleChoice</div> 
-                    <div className="addMcQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
+                    <div className="addTfQuestion btn " onClick={() => addmcQuestionHandler()}> + Add Multiple-Choice</div> 
+                    <div className="addMcQuestion btn " onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
                 </div>
                 <div className="examButtons">
-                    <button className="btn btn--green" > New Exam</button>
-                    <button className="btn btn--green" onClick={()=>sendExam()}>Save the Exam</button>
+                    {/* <button className="btn btn--green" > New Exam</button> */}
+                    <button className="btn btn--green saveExamButton" onClick={()=>sendExam()}>Save the Exam</button>
                 </div>
             </div>
             }
