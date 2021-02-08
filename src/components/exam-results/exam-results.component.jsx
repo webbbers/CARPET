@@ -21,8 +21,8 @@ const ExamResults = (props) => {
 		var matching=0;
 		for (var i=0; i < exam_f.wrongAnswers.length; i++)
 			for (var v=0; v < exam_s.wrongAnswers.length; v++)
-				if (exam_f.wrongAnswers[i].questionId == exam_s.wrongAnswers[v].questionId
-				 && exam_f.wrongAnswers[i].selectedOption == exam_s.wrongAnswers[v].selectedOption) matching++;
+				if (exam_f.wrongAnswers[i].questionId === exam_s.wrongAnswers[v].questionId
+				 && exam_f.wrongAnswers[i].selectedOption === exam_s.wrongAnswers[v].selectedOption) matching++;
 
 		var percentage = (matching / Math.min(exam_f.wrongAnswers.length, exam_s.wrongAnswers.length)) *100
 		console.log(percentage);

@@ -139,12 +139,14 @@ const ExamCreator = (props) => {
                     <div className="addMcQuestion" onClick={()=> addtfQuestionHandler()}> + Add True-False</div> 
                 </div>
                 <div className="examButtons">
-                    <button className="btn btn-green" > New Exam</button>
-                    <button className="btn btn-green" onClick={()=>sendExam()}>Save the Exam</button>
+                    <button className="btn btn--green" > New Exam</button>
+                    <button className="btn btn--green" onClick={()=>sendExam()}>Save the Exam</button>
                 </div>
             </div>
             }
+            
         </div>
+        
     )
     
 }

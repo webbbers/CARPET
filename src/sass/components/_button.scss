@@ -42,8 +42,8 @@
         }
     }
     &--green{
-        background-color: $color-primary;
-        color: $color-white;
+        background-color: rgb(16,122,16);
+        color: #000;
 
         &::after{
             background-color: $color-primary;

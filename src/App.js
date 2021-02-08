@@ -16,6 +16,7 @@ import Exam from './components/exam/exam.component';
 import ExamResult from './components/exam-results/exam-results.component';
 import MyExams from './components/myexams/myExams.component';
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component'
 
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser as setCurrentUserRedux } from './redux/user/user.actions';
@@ -61,6 +62,7 @@ const App = props => {
         <Route path ='/exam/' component={Exam}/>
         <Route path ='/examresult/' component={ExamResult}/>
       </Switch>
+      <Footer/>
     </div>
   );
 }

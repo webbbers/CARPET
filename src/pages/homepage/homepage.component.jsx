@@ -5,8 +5,6 @@ import { firestore } from '../../firebase/firebase.utils';
 
 import './homepage.styles.scss';
 
-import Footer from '../../components/footer/footer.component';
-
 const HomePage = () => {
 
     // eslint-disable-next-line
@@ -196,7 +194,6 @@ const HomePage = () => {
                 </div>
 
             </section>
-            <Footer/>
         </div>
     )
 }
