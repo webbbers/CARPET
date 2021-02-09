@@ -13,6 +13,7 @@ const McQuestion = props => {
         {answerText:"",isCorrect:false,key:0},
         {answerText:"",isCorrect:false,key:1},
     ])
+    const [shuffle,setShuffle] = useState(false)
     const [optionCount,setOptionCount] = useState(2)
 
 
@@ -58,7 +59,6 @@ const McQuestion = props => {
             });
     }
 
-
     const updateState = ( txt, key,value ) => {
         if(txt){
             // console.log("i am in here key =",key,"  value=",value)
@@ -98,8 +98,8 @@ const McQuestion = props => {
             ))}
             
             <div className='questionButtons'>
-                {/* <button >Shuffle</button> */}
-                <buttson className="questionAdd" onClick={()=>saveHandler()}> Save </buttson>
+                <div className="correctness">Shuffle &nbsp;<input type="checkbox" onChange={()=>setShuffle(!shuffle)}/></div>
+                <button className="questionAdd" onClick={()=>saveHandler()}> Save </button>
                 <button className="questionDelete" onClick={() =>props.deleteHandler(question.id)}>Delete </button>
             </div>
         </div>

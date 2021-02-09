@@ -164,6 +164,24 @@ export const shuffleSingleQuestionsOptions = (question) =>{
     }
     question.answerOptions = tempArr;
     question.answerOptions.sort( () => randomize());
+
+    let firstTrueIndex =0
+    for(let i=0;i<question.answerOptions.length;i++){
+        if(question.answerOptions[i].isCorrect == true){
+            firstTrueIndex=i;
+            break;
+        } 
+    }
+    let temp3 = question.answerOptions.filter(function(item, pos) {
+        if(!item)   return false;
+        console.log("this is a answeroption",item)
+        if(item.isCorrect == true){
+            return firstTrueIndex == pos;
+        }
+        return true
+    })
+    question.answerOptions=temp3;
+
     return question;
 }
 
