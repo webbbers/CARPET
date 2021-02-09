@@ -9,6 +9,8 @@ const TfQuestion = props => {
     // const [editing,setEditing] = useState(false);
     const [point,setPoint] = useState(0)
     const [text,setText] = useState('')
+    const [image,setImage] = useState(false)
+    const [imageURL,setImageURL] = useState('')
     const [correctness,setCorrectness] = useState(false)
 
     // {
@@ -28,6 +30,7 @@ const TfQuestion = props => {
             {
                 id:question.id,
                 type:"TrueFalse",
+                imageURL: image?imageURL:null,
                 points:point,
                 questionText:text,
                 isCorrect:correctness
@@ -43,17 +46,23 @@ const TfQuestion = props => {
         <div className="tfQuestion">
             <div className="questionOrder">Q{props.order+1}</div>
             <div className="questionText">
-                <input type="text"className="tfQuestionInput"  name="name" placeholder="Question" onChange={(e)=>updateState(e.target.value)}/>{text}
-                <input type="text" className="tfPointInput"name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>{point}
+                <input type="text"className="tfQuestionInput"  name="name" placeholder="Question" onChange={(e)=>updateState(e.target.value)}/>
+                <input type="text" className="tfPointInput"name="name" placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/>
                 <div className="tfCorrectness">correct &nbsp;<input type="checkbox" onChange={()=>setCorrectness(!correctness)}/></div>
             </div>
             
             
-           
-            <div>{correctness?"true":"false"}</div>
+            {image ? 
+            <div className="questionText"><input type="text" className="tfQuestionInput"  placeholder="Image URL" onChange={(e)=>setImageURL(e.target.value)}/></div>
+                :
+              null
+            }
+            {/* <div>{correctness?"true":"false"}</div> */}
+            
             
             
             <div className='questionButtons'>
+                <button className="questionAdd" onClick={()=>setImage(!image)}> Add Image </button>
                 <button className="questionAdd" onClick={()=>saveHandler()}> Save</button>
                 <button className="questionDelete" onClick={() =>props.deleteHandler(question.id)}>Delete</button>
             </div>

@@ -13,8 +13,10 @@ const McQuestion = props => {
         {answerText:"",isCorrect:false,key:0},
         {answerText:"",isCorrect:false,key:1},
     ])
-    const [shuffle,setShuffle] = useState(false)
-    const [optionCount,setOptionCount] = useState(2)
+    const [image,setImage] = useState(false)
+    const [imageURL,setImageURL] = useState('')
+    // const [shuffle,setShuffle] = useState(false)
+    // const [optionCount,setOptionCount] = useState(2)
 
 
     // {
@@ -53,6 +55,7 @@ const McQuestion = props => {
             {
                 id:question.id,
                 type:"MultipleChoice",
+                imageURL: image?imageURL:null,
                 points:point,
                 questionText:text,
                 answerOptions:options
@@ -79,9 +82,9 @@ const McQuestion = props => {
         <div className="mcQuestion">
              <div className="questionOrder">Q{props.order+1}</div>
             <div className="questionText">
-                <input type="text" className="mcQuestionInput"  placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>{text}
-                <input type="text" className="mcPointInput"  placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/> {point}
-                <input type="text" className="mcPointInput" placeholder="2" onChange={(e)=>setOptionCount(Number(e.target.value))}/> {optionCount}
+                <input type="text" className="mcQuestionInput"  placeholder={question.text} onChange={(e)=>setText(e.target.value)}/>
+                <input type="text" className="mcPointInput"  placeholder="0" onChange={(e)=>setPoint(Number(e.target.value))}/> 
+                {/* <input type="text" className="mcPointInput" placeholder="2" onChange={(e)=>setOptionCount(Number(e.target.value))}/> {optionCount} */}
             </div>
             <div className="options">
                 {options.map(option => (
@@ -92,13 +95,21 @@ const McQuestion = props => {
                      </div>
                 ))}
             </div>
-            <div className="addOptionDiv"><button className="addOption"  onClick={()=>addOption()}> ADD OPTION</button></div>
-            {options.map(option => (
+            <div className="addOptionDiv">
+                <button className="addOption"  onClick={()=>addOption()}> ADD OPTION</button>
+                <button className="addOption"  onClick={()=>setImage(!image)}> ADD IMAGE</button>
+            </div>
+            {/* {options.map(option => (
               <span key={option.key}>{option.answerText} {option.isCorrect ?"true":"not"}</span>
-            ))}
+            ))} */}
+            {image ? 
+            <div className="questionText"><input type="text" className="mcQuestionInput"  placeholder="Image URL" onChange={(e)=>setImageURL(e.target.value)}/></div>
+                :
+              null
+            }
             
             <div className='questionButtons'>
-                <div className="correctness">Shuffle &nbsp;<input type="checkbox" onChange={()=>setShuffle(!shuffle)}/></div>
+                {/* <div className="correctness">Shuffle &nbsp;<input type="checkbox" onChange={()=>setShuffle(!shuffle)}/></div> */}
                 <button className="questionAdd" onClick={()=>saveHandler()}> Save </button>
                 <button className="questionDelete" onClick={() =>props.deleteHandler(question.id)}>Delete </button>
             </div>

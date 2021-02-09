@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 
 import './question.styles.scss'
 
@@ -15,18 +15,7 @@ const Question = props => {
         }
         setAnswerText(text)
     }
-    // useEffect(()=>{
-    //     if(question){
-    //         let temp = question.answerOptions.filter(function(item, pos) {
-    //             if(item.isCorrect == true){
-    //                 return question.answerOptions.indexOf(item => item.isCorrect == true) == pos;
-    //             }
-    //             return true
-    //         })
     
-    //         question.answerOptions=temp;
-    //     }
-    // },[question])
     // example Question : 
         // type:"MultipleChoice",
         // imageURL: "https://avatars2.githubusercontent.com/u/54589572?s=460&u=b663e9b613864114600790beb68d7d1d45b9cbde&v=4",

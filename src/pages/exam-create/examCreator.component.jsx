@@ -110,7 +110,7 @@ const ExamCreator = (props) => {
                     <input type="text" className="examNameInput" required placeholder="Exam Name" onChange={(e)=>setExamName(e.target.value)}/>
                     <input type="text" className="examPointInput" required placeholder="Max Score" onChange={(e)=>setMaxScore(Number(e.target.value))}/>
                 </div>
-                <div>{examName} &nbsp; &nbsp; {maxScore}</div>
+                {/* <div>{examName} &nbsp; &nbsp; {maxScore}</div> */}
                 
                 {questions.map(question => (
                     <div key={question.id}>
