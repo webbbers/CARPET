@@ -38,12 +38,12 @@ const Question = props => {
             <div className="answers">
             {question.type === "MultipleChoice" ?
                 <form>
-                    {question.answerOptions.map( answerOption => (
-                        <div className="answersOptionlist" key={answerOption.answerText}>
+                    {question.answerOptions.map( answerOption => ( answerOption ?
+                        <div className="answersOptionlist" key={answerOption.key}>
                             <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect,answerOption.answerText)}/>
-                            <label className="answerOption">{answerOption.answerText}</label>
+                            <label className="answerOption"> {answerOption.answerText} </label>
                         </div>
-                    ))}
+                    : null))}
                 </form>
                 :
                 <form>
