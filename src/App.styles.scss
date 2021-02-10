@@ -1,0 +1,25 @@
+.withoutFooter{
+    min-height: 70vh;
+}
+.appInputDiv{
+    // margin-left: 1.66rem;
+    // margin-right: 1.66rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    
+    .appInput{
+        width: 76%;
+        padding: 1rem 1.66rem;
+        margin: 0.66rem 0.45rem;
+        font-size: 2rem;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+}

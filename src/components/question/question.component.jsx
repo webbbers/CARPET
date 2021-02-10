@@ -7,12 +7,21 @@ const Question = props => {
     const { question,questionNumber,approve } = props;
     const [correct,setCorrect] = useState(false)  
     const [answerText,setAnswerText] = useState('')
-    const optionClickedHandler = (status,text='') => {
-        if (status) {
-            setCorrect(true)
+    const optionClickedHandler = (qType,status,text='') => {
+        if(qType === 0){
+            if (status ) {
+                setCorrect(true)
+            } else {
+                setCorrect(false)
+            }
         } else {
-            setCorrect(false)
+            if(question.isCorrect === status){
+                setCorrect(true)
+            } else {
+                setCorrect(false)
+            }
         }
+        
         setAnswerText(text)
     }
     
@@ -41,7 +50,7 @@ const Question = props => {
                 <form>
                     {question.answerOptions.map( answerOption => ( answerOption ?
                         <div className="answersOptionlist" key={answerOption.key}>
-                            <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(answerOption.isCorrect,answerOption.answerText)}/>
+                            <input className="Input" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(0,answerOption.isCorrect,answerOption.answerText)}/>
                             <label className="answerOption"> {answerOption.answerText} </label>
                         </div>
                     : null))}
@@ -49,9 +58,9 @@ const Question = props => {
                 :
                 <form>
                     <div>
-                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(true)}/>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(1,true)}/>
                         <label className="answerOption">True</label>
-                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(false)}/>
+                        <input className="tQuestionOption" type="radio" name="radAnswer" onClick={()=>optionClickedHandler(1,false)}/>
                         <label className="answerOption">False</label>
                     </div>
                 </form>

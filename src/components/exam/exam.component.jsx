@@ -13,7 +13,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector'
 const Exam = (props) => {
     
     const [fetching,setFetching] = useState(true)
-    const [seconds,setSeconds] = useState(100)
+    const [seconds,setSeconds] = useState(500)
     const [examName,setExamName] = useState('')
     const [authorId,setAuthorId] = useState(0)
     const [currentQuestion,setCurrentQuestion] = useState(0)

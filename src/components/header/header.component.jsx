@@ -35,7 +35,7 @@ const Header = ({ currentUser}) => (
             }
             </span>
             <span><Link to="/examcreator" className="btn-text ">Create Exam &rarr;</Link></span>
-            <span><Link to="/exam/n5L8RXdGTWN5Og9kdUHh" className="btn-text ">Example Exam &rarr;</Link></span>
+            <span><Link to="/exam/rAvVwYbk5S6aQ5BUudhh" className="btn-text ">Example Exam &rarr;</Link></span>
          
         </div>
         

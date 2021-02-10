@@ -42,7 +42,7 @@ const HomePage = () => {
                         <p className="paragraph">
                             CARPET provides detailed results for students , class exam results with anti-cheat checking system for teachers and detailed analysis for institutions who wants to see their progress and success.
                         </p>
-                        <Link to="signin"><button className="btn btn--green">Next Step &rarr;</button></Link>
+                        <Link to="signin"><button className="btn btn--green nextStepButton">Next Step &rarr;</button></Link>
                     </div>
                     <div className="col-1-of-2">
                         <img alt="laptop" src={lapimage} className="lapimage"/>
@@ -50,46 +50,7 @@ const HomePage = () => {
                 </div>
                 
             </section>
-            {/* <section className="section-features">
-                <div className="row">
-                    <div className="col-1-of-4">
-                        <div className="feature-box">
-                            <i className="feature-box__icon icon-basic-world "></i>
-                            <h3 className="heading-tertiary u-margin-bottom-small">Explore the world</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col-1-of-4">
-                        <div className="feature-box">
-                            <i className="feature-box__icon icon-basic-compass "></i>
-                            <h3 className="heading-tertiary u-margin-bottom-small">Meet nature</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col-1-of-4">
-                        <div className="feature-box">
-                            <i className="feature-box__icon icon-basic-map "></i>
-                            <h3 className="heading-tertiary u-margin-bottom-small">Find your way</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col-1-of-4">
-                        <div className="feature-box">
-                            <i className="feature-box__icon icon-basic-heart "></i>
-                            <h3 className="heading-tertiary u-margin-bottom-small">Live a healthier life</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum minus, blanditiis tempore enim mollitia doloribus sit itaque at veritatis optio
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
+            
             <section className="section-tours" id="section-tours">
                 <div className="u-center-text u-margin-bottom-big">
                     <h2 className="heading-secondary">
@@ -190,7 +151,7 @@ const HomePage = () => {
                 </div>
 
                 <div className="u-center-text u-margin-top-huge">
-                    <a href="/" className="btn btn--green">Learn More</a>
+                    <a href="/" className="btn btn--green nextStepButton">Learn More</a>
                 </div>
 
             </section>

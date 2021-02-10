@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import { Switch,Route,Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
-// import './App.css';
+import './App.styles.scss';
 
 import { createStructuredSelector } from 'reselect';
 
@@ -24,6 +24,8 @@ import { selectCurrentUser } from './redux/user/user.selector';
 
 
 const App = props => {
+
+  const [approvedUser,setApprovedUser] = useState(false)
 
   var unsubscribeFromAuth=null;
   
@@ -51,18 +53,38 @@ const App = props => {
     }
   },[])
 
+  const checkKey = (val) =>{
+    setTimeout(function(){ if(val=== 'itu2021'){
+      setApprovedUser(true)
+    } ; }, 100);
+    
+  }
   return (
     <div>
-      <Header/>
-      <Switch>
-        <Route exact path='/'  component={HomePage}/>
-        <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/>
-        <Route exact path ='/examcreator' component={ExamCreator}/>
-        <Route exact path ='/myExams' component={MyExams}/>
-        <Route path ='/exam/' component={Exam}/>
-        <Route path ='/examresult/' component={ExamResult}/>
-      </Switch>
-      <Footer/>
+      {approvedUser?
+      <div>
+        <div className="withoutFooter">
+          <Header/>
+          <Switch>
+            <Route exact path='/'  component={HomePage}/>
+            <Route exact path='/signin'  render={() => props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}/>
+            <Route exact path ='/examcreator' component={ExamCreator}/>
+            <Route exact path ='/myExams' component={MyExams}/>
+            <Route path ='/exam/' component={Exam}/>
+            <Route path ='/examresult/' component={ExamResult}/>
+          </Switch>
+        </div>
+        <Footer/>
+      </div>
+        
+        : 
+        
+        <div className="appInputDiv">
+          <input type="text" className="appInput"  placeholder=" ENTER YOUR KEY " onChange={(e)=>checkKey(e.target.value)}/>
+        </div>
+         
+      }
+        
     </div>
   );
 }
