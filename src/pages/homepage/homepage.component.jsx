@@ -8,15 +8,15 @@ import './homepage.styles.scss';
 const HomePage = () => {
 
     // eslint-disable-next-line
-    useEffect(()=>{
-        firestore.collection("users").get().then(function(querySnapshot) {
-            console.log("Users")
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-        });
-    })
+    // useEffect(()=>{
+    //     firestore.collection("users").get().then(function(querySnapshot) {
+    //         console.log("Users")
+    //         querySnapshot.forEach(function(doc) {
+    //             // doc.data() is never undefined for query doc snapshots
+    //             console.log(doc.id, " => ", doc.data());
+    //         });
+    //     });
+    // })
     
     return(
         <div className='homepage'>

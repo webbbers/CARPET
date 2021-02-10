@@ -12,6 +12,8 @@ import { selectCurrentUser } from '../../redux/user/user.selector'
 
 const Exam = (props) => {
     
+    const [entranceName,setEntranceName] = useState('')
+    const [examStarted , setExamStarted] = useState(false)
     const [fetching,setFetching] = useState(true)
     const [seconds,setSeconds] = useState(500)
     const [examName,setExamName] = useState('')
@@ -77,7 +79,7 @@ const Exam = (props) => {
         if (examEnded){
             let db =firebase.firestore();
             let entrantId = props.currentUser? props.currentUser.id : 0
-            let entrantName = props.currentUser? props.currentUser.displayName: 'Unknown Person'
+            let entrantName = props.currentUser? props.currentUser.displayName: entranceName
             db.collection("examResults").add({
                 examId:examId,
                 authorId:authorId,
@@ -116,27 +118,35 @@ const Exam = (props) => {
     }
     return (
         <div className='exampage'>
-            <header className="examHeader">
-            <div>{props.location.pathname.slice(6)}</div>
-            <div className="timer">
-                <div className="timer_text">Time Left</div>
-                <div className="timer_sec">{seconds}</div>
-            </div>
-            </header>
-            <div className="examName"> {examName}</div>
-            {fetching ? <Spinner/>
-            :
-            questions.length > currentQuestion ? 
-                <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point,answerText)=>approve(correct,point,answerText)} key={questions[currentQuestion].id}/>
-                
-                :
-            
-                <div className="examResults">
-                    <h1>END OF EXAM</h1>
-                    <div> You have scored <span className="score">{score}</span> out of {maxScore}</div>
+            {examStarted?
+                <div>
+                    <header className="examHeader">
+                    <div>{props.location.pathname.slice(6)}</div>
+                    <div className="timer">
+                        <div className="timer_text">Time Left</div>
+                        <div className="timer_sec">{seconds}</div>
+                    </div>
+                    </header>
+                    <div className="examName"> {examName}</div>
+                    {fetching ? <Spinner/>
+                    :
+                    questions.length > currentQuestion ? 
+                        <Question question={questions[currentQuestion]} questionNumber={currentQuestion+1} approve = {(correct,point,answerText)=>approve(correct,point,answerText)} key={questions[currentQuestion].id}/>
+                        
+                        :
+                    
+                        <div className="examResults">
+                            <h1>END OF EXAM</h1>
+                            <div> You have scored <span className="score">{score}</span> out of {maxScore}</div>
+                        </div>
+                    }
                 </div>
+            :
+            <div className="appInputDiv">
+                <input type="text" className="appInput"  placeholder=" Enter your name or nickname" onChange={(e)=>setEntranceName(e.target.value)}/>
+                <button  className="btn btn--green nextStepButton" onClick={()=>setExamStarted(true)}>Enter the EXAM</button>
+            </div>
             }
-            
         </div>
     )
     

@@ -65,7 +65,9 @@ const ExamResults = (props) => {
     return (
         <div className="examResultsPage">
             <div className='row'>
-			<button onClick = {() => document.getElementById("cheater field").innerHTML = check_similarity()}> fetch cheaters </button>
+            <div className='fetchCheatersDiv'>
+			    <button className="btn btn--green nextStepButton" onClick = {() => document.getElementById("cheater field").innerHTML = check_similarity()}> fetch cheaters </button>
+            </div>
 			<h1 id="cheater field">  </h1>
            {fetching ? <div><Spinner/></div> :
              results.map(result => (

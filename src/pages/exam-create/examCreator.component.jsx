@@ -96,7 +96,7 @@ const ExamCreator = (props) => {
             <div className="createdExamInfo">
                 <div>Your exam is created successfully.</div>
                 <div>Exam ID is {examId}</div>
-                <div> You can share the link http://localhost:3000/exam/{examId} </div>
+                <div> You can share the link https://react-quiz-214cb.web.app/exam/{examId} </div>
             </div> 
             
             :
